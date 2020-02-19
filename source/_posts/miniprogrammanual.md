@@ -1,6 +1,6 @@
 ---
 title: 小程序思维导图
-photos: https://pic3.zhimg.com/v2-5bb8cbc4b3c10fe32c2e6983ec851c36_b.png
+photos: https://pic2.zhimg.com/v2-40fcc138398143f0b8e3036241c162d1_r.jpg
 date: 2020-01-25 14:38:11
 tags: [小程序思维导图]
 categories: 小程序
