@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="程序设计语言，C#," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考：https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-cn&#x2F;dotnet&#x2F;csharp&#x2F;C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新式编程语言，不仅面向对象，还类型安全。 C#源于 C 语言系列，C、C++、Java 和 JavaScript 程序员很快就可以上手使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#关键字">
+<meta property="og:url" content="https://w20150427.github.io/2020/02/18/csharpgrammar-1/index.html">
+<meta property="og:site_name" content="王斌的博客">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-cn&#x2F;dotnet&#x2F;csharp&#x2F;C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新式编程语言，不仅面向对象，还类型安全。 C#源于 C 语言系列，C、C++、Java 和 JavaScript 程序员很快就可以上手使用。">
+<meta property="article:published_time" content="2020-02-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-20T07:43:54.022Z">
+<meta property="article:author" content="wang bin">
+<meta property="article:tag" content="程序设计语言，C#">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://w20150427.github.io/2020/02/18/csharpgrammar-1/"/>
+
+
+
+
+
+  <title>C#关键字 | 王斌的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王斌的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">wang bin's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://w20150427.github.io/2020/02/18/csharpgrammar-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wang bin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王斌的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C#关键字</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-18T00:00:00+08:00">
+                2020-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/csharp%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">csharp程序设计语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>参考：<a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/csharp/</a><br>C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新式编程语言，不仅面向对象，还类型安全。 C#源于 C 语言系列，C、C++、Java 和 JavaScript 程序员很快就可以上手使用。<a id="more"></a></p>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><table style="color:#0065b3;width:100%;border:0px;" >
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">abstract</td>
+<td style="width:25%;border-left:0px;border-right:0px;">as</td>
+<td style="width:25%;border-left:0px;border-right:0px;">base</td>
+<td style="width:25%;border-left:0px;border-right:0px;">bool</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">break</td>
+<td style="width:25%;border-left:0px;border-right:0px;">byte</td>
+<td style="width:25%;border-left:0px;border-right:0px;">case</td>
+<td style="width:25%;border-left:0px;border-right:0px;">catch</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">char</td>
+<td style="width:25%;border-left:0px;border-right:0px;">checked</td>
+<td style="width:25%;border-left:0px;border-right:0px;">class</td>
+<td style="width:25%;border-left:0px;border-right:0px;">const</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">continue</td>
+<td style="width:25%;border-left:0px;border-right:0px;">decimal</td>
+<td style="width:25%;border-left:0px;border-right:0px;">default</td>
+<td style="width:25%;border-left:0px;border-right:0px;">delegate</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">do</td>
+<td style="width:25%;border-left:0px;border-right:0px;">double</td>
+<td style="width:25%;border-left:0px;border-right:0px;">else</td>
+<td style="width:25%;border-left:0px;border-right:0px;">enum</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">event</td>
+<td style="width:25%;border-left:0px;border-right:0px;">explicit</td>
+<td style="width:25%;border-left:0px;border-right:0px;">extern</td>
+<td style="width:25%;border-left:0px;border-right:0px;">false</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">finally</td>
+<td style="width:25%;border-left:0px;border-right:0px;">fixed</td>
+<td style="width:25%;border-left:0px;border-right:0px;">float</td>
+<td style="width:25%;border-left:0px;border-right:0px;">for</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">foreach</td>
+<td style="width:25%;border-left:0px;border-right:0px;">goto</td>
+<td style="width:25%;border-left:0px;border-right:0px;">if</td>
+<td style="width:25%;border-left:0px;border-right:0px;">implicit</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">in</td>
+<td style="width:25%;border-left:0px;border-right:0px;">int</td>
+<td style="width:25%;border-left:0px;border-right:0px;">interface</td>
+<td style="width:25%;border-left:0px;border-right:0px;">internal</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">is</td>
+<td style="width:25%;border-left:0px;border-right:0px;">lock</td>
+<td style="width:25%;border-left:0px;border-right:0px;">long</td>
+<td style="width:25%;border-left:0px;border-right:0px;">namespace</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">new</td>
+<td style="width:25%;border-left:0px;border-right:0px;">null</td>
+<td style="width:25%;border-left:0px;border-right:0px;">object</td>
+<td style="width:25%;border-left:0px;border-right:0px;">operator</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">out</td>
+<td style="width:25%;border-left:0px;border-right:0px;">override</td>
+<td style="width:25%;border-left:0px;border-right:0px;">params</td>
+<td style="width:25%;border-left:0px;border-right:0px;">private</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">protected</td>
+<td style="width:25%;border-left:0px;border-right:0px;">public</td>
+<td style="width:25%;border-left:0px;border-right:0px;">readonly</td>
+<td style="width:25%;border-left:0px;border-right:0px;">ref</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">return</td>
+<td style="width:25%;border-left:0px;border-right:0px;">sbyte</td>
+<td style="width:25%;border-left:0px;border-right:0px;">sealed</td>
+<td style="width:25%;border-left:0px;border-right:0px;">short</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">sizeof</td>
+<td style="width:25%;border-left:0px;border-right:0px;">stackalloc</td>
+<td style="width:25%;border-left:0px;border-right:0px;">static</td>
+<td style="width:25%;border-left:0px;border-right:0px;">string</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">struct</td>
+<td style="width:25%;border-left:0px;border-right:0px;">switch</td>
+<td style="width:25%;border-left:0px;border-right:0px;">this</td>
+<td style="width:25%;border-left:0px;border-right:0px;">throw</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">true</td>
+<td style="width:25%;border-left:0px;border-right:0px;">try</td>
+<td style="width:25%;border-left:0px;border-right:0px;">typeof</td>
+<td style="width:25%;border-left:0px;border-right:0px;">uint</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">ulong</td>
+<td style="width:25%;border-left:0px;border-right:0px;">unchecked</td>
+<td style="width:25%;border-left:0px;border-right:0px;">unsafe</td>
+<td style="width:25%;border-left:0px;border-right:0px;">ushort</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">using</td>
+<td style="width:25%;border-left:0px;border-right:0px;">using static</td>
+<td style="width:25%;border-left:0px;border-right:0px;">virtual</td>
+<td style="width:25%;border-left:0px;border-right:0px;">void</td>
+</tr>
+<tr>
+<td style="width:25%;border-left:0px;border-right:0px;">volatile</td>
+<td style="width:25%;border-left:0px;border-right:0px;">while</td>
+<td style="width:25%;border-left:0px;border-right:0px;"></td>
+<td style="width:25%;border-left:0px;border-right:0px;"></td>
+</tr>
+</table>
+
+<h3 id="上下文关键字"><a href="#上下文关键字" class="headerlink" title="上下文关键字"></a>上下文关键字</h3><table style="color:#0065b3;width:100%;border:0px;" >
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">add</td>
+<td style="width:40%;border-left:0px;border-right:0px;">ascending</td>
+<td style="width:25%;border-left:0px;border-right:0px;">base</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">async</td>
+<td style="width:40%;border-left:0px;border-right:0px;">await</td>
+<td style="width:25%;border-left:0px;border-right:0px;">by</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">descending</td>
+<td style="width:40%;border-left:0px;border-right:0px;">dynamic</td>
+<td style="width:25%;border-left:0px;border-right:0px;">equals</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">from</td>
+<td style="width:40%;border-left:0px;border-right:0px;">get</td>
+<td style="width:25%;border-left:0px;border-right:0px;">global</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">group</td>
+<td style="width:40%;border-left:0px;border-right:0px;">into</td>
+<td style="width:25%;border-left:0px;border-right:0px;">join</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">let</td>
+<td style="width:40%;border-left:0px;border-right:0px;">nameof</td>
+<td style="width:25%;border-left:0px;border-right:0px;">on</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">orderby</td>
+<td style="width:40%;border-left:0px;border-right:0px;">partial（类型）</td>
+<td style="width:25%;border-left:0px;border-right:0px;">partial（方法）</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">remove</td>
+<td style="width:40%;border-left:0px;border-right:0px;">select</td>
+<td style="width:25%;border-left:0px;border-right:0px;">set</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">unmanaged（泛型类型约束）</td>
+<td style="width:40%;border-left:0px;border-right:0px;">value</td>
+<td style="width:25%;border-left:0px;border-right:0px;">var</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">when（筛选条件）</td>
+<td style="width:40%;border-left:0px;border-right:0px;">where（泛型类型约束）</td>
+<td style="width:25%;border-left:0px;border-right:0px;">    where（查询子句）</td>
+</tr>
+<tr>
+<td style="width:35%;border-left:0px;border-right:0px;">yield</td>
+<td style="width:40%;border-left:0px;border-right:0px;"></td>
+<td style="width:25%;border-left:0px;border-right:0px;"></td>
+</tr>
+</table>
+
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><table style="color:#0065b3;width:100%;border:0px;" >
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;color:black;font-weight:bold;">运算符</td>
+<td style="width:20%;border-left:0px;border-right:0px;color:black;font-weight:bold;">类别或名称</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x.y、x?.y、x?[y]、f(x)、a[i]、x++、x--、new、typeof、checked、unchecked、default、nameof、delegate、sizeof、stackalloc、x->y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">基本</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">+x、-x、!x、~x、++x、--x、^x、(T)x、await、&x、*x、true 和 false</td>
+<td style="width:20%;border-left:0px;border-right:0px;">一元</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x..y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">范围</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x * y、x / y、x % y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">乘法</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x + y、x – y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">加法</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x < y、x > y、x <= y、x >= y、is、as</td>
+<td style="width:20%;border-left:0px;border-right:0px;">关系和类型测试</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x == y、x != y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">相等</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x & y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">布尔逻辑 AND 或按位逻辑 AND</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x ^ y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">布尔逻辑 XOR 或按位逻辑 XOR</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x | y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">布尔逻辑 OR 或按位逻辑 OR</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x && y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">条件“与”</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x || y</td>
+<td style="width:20%;border-left:0px;border-right:0px;">条件“或”</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">c ? t : f/td>
+<td style="width:20%;border-left:0px;border-right:0px;">条件运算符</td>
+</tr>
+<tr>
+<td style="width:80%;border-left:0px;border-right:0px;">x = y、x += y、x -= y、x *= y、x /= y、x %= y、x &= y、x |= y、x ^= y、x <<= y、x >>= y、x ??= y、=></td>
+<td style="width:20%;border-left:0px;border-right:0px;">赋值和 lambda 声明</td>
+</tr>
+</table>
+
+<h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3><blockquote>
+<p>程序执行的操作采用语句表达。 常见操作包括声明变量、赋值、调用方法、循环访问集合，以及根据给定条件分支到一个或另一个代码块。 语句在程序中的执行顺序称为“控制流”或“执行流”。 根据程序对运行时所收到的输入的响应，在程序每次运行时控制流可能有所不同。<br>语句可以是以分号结尾的单行代码，也可以是语句块中的一系列单行语句。 语句块括在括号 {} 中，并且可以包含嵌套块。</p>
+</blockquote>
+<table style="color:#0065b3;width:100%;border:0px;" >
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;color:black;font-weight:bold;">类别</td>
+<td style="width:85%;border-left:0px;border-right:0px;color:black;font-weight:bold;">C# 关键字/说明</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">声明语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">声明语句引入新的变量或常量。 变量声明可以选择为变量赋值。 在常量声明中必须赋值。
+</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">表达式语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">用于计算值的表达式语句必须在变量中存储该值。 有关详细信息，请参阅表达式语句。</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">选择语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">选择语句用于根据一个或多个指定条件分支到不同的代码段。 有关详细信息，请参阅下列主题：if else switch case</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">迭代语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">迭代语句用于遍历集合（如数组），或重复执行同一组语句直到满足指定的条件。 有关详细信息，请参阅下列主题：do for foreach in while</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">跳转语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">跳转语句将控制转移给另一代码段。 有关详细信息，请参阅下列主题：break continue default goto return yield</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">异常处理语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">异常处理语句用于从运行时发生的异常情况正常恢复。 有关详细信息，请参阅下列主题：throw try-catch try-finally try-catch-finally</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">Checked 和 unchecked</td>
+<td style="width:85%;border-left:0px;border-right:0px;">Checked 和 unchecked 语句用于指定将结果存储在变量中、但该变量过小而不能容纳结果值时，是否允许数值运算导致溢出。 有关详细信息，请参阅 checked 和 unchecked。</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">await 语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">如果用 async 修饰符标记方法，则可以使用该方法中的 await 运算符。 在控制到达异步方法的 await 表达式时，控制将返回到调用方，该方法中的进程将挂起，直到等待的任务完成为止。 任务完成后，可以在方法中恢复执行。
+
+<p>有关简单示例，请参阅方法的“异步方法”一节。 有关详细信息，请参阅 async 和 await 的异步编程</td></p>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">yield return 语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">迭代器对集合执行自定义迭代，如列表或数组。 迭代器使用 yield return 语句返回元素，每次返回一个。 到达 yield return 语句时，会记住当前在代码中的位置。 下次调用迭代器时，将从该位置重新开始执行。</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">fixed 语句    </td>
+<td style="width:85%;border-left:0px;border-right:0px;">fixed 语句禁止垃圾回收器重定位可移动的变量。 有关详细信息，请参阅 fixed。/td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">lock 语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">lock 语句用于限制一次仅允许一个线程访问代码块。 有关详细信息，请参阅 lock。</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">带标签的语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">可以为语句指定一个标签，然后使用 goto 关键字跳转到该带标签的语句。 （参见下一行中的示例。）</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">空语句</td>
+<td style="width:85%;border-left:0px;border-right:0px;">空语句只含一个分号。 不执行任何操作，可以在需要语句但不需要执行任何操作的地方使用。</td>
+</tr>
+</table>
+<details>
+<summary>展开查看</summary>
+<pre><code>
+局部变量声明
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Declarations</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">2</span>, c = <span class="number">3</span>;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    Console.WriteLine(a + b + c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+局部常量声明
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ConstantDeclarations</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">float</span> pi = <span class="number">3.1415927f</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> r = <span class="number">25</span>;</span><br><span class="line">    Console.WriteLine(pi * r * r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+表达式语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">IfStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (args.Length == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"No arguments"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"One or more arguments"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+if 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ConstantDeclarations</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">float</span> pi = <span class="number">3.1415927f</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> r = <span class="number">25</span>;</span><br><span class="line">    Console.WriteLine(pi * r * r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+switch 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SwitchStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = args.Length;</span><br><span class="line">    <span class="keyword">switch</span> (n) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            Console.WriteLine(<span class="string">"No arguments"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            Console.WriteLine(<span class="string">"One argument"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            Console.WriteLine(<span class="string">$"<span class="subst">&#123;n&#125;</span> arguments"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+while 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">WhileStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; args.Length) </span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(args[i]);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+do 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">DoStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">string</span> s;</span><br><span class="line">    <span class="keyword">do</span> </span><br><span class="line">    &#123;</span><br><span class="line">        s = Console.ReadLine();</span><br><span class="line">        Console.WriteLine(s);</span><br><span class="line">    &#125; <span class="keyword">while</span> (!<span class="keyword">string</span>.IsNullOrEmpty(s));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+for 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ForStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; args.Length; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(args[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+foreach 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ForEachStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">string</span> s <span class="keyword">in</span> args) </span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+continue 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ContinueStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; args.Length; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (args[i].StartsWith(<span class="string">"/"</span>)) </span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        Console.WriteLine(args[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+goto 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">GoToStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">goto</span> check;</span><br><span class="line">    loop:</span><br><span class="line">    Console.WriteLine(args[i++]);</span><br><span class="line">    check:</span><br><span class="line">    <span class="keyword">if</span> (i &lt; args.Length) </span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+return 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   Console.WriteLine(Add(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+yield 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> System.Collections.Generic.<span class="function">IEnumerable&lt;<span class="keyword">int</span>&gt; <span class="title">Range</span>(<span class="params"><span class="keyword">int</span> start, <span class="keyword">int</span> end</span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; end; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">YieldStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="function"><span class="keyword">int</span> i <span class="keyword">in</span> <span class="title">Range</span>(<span class="params"><span class="number">-10</span>,<span class="number">10</span></span>)) </span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+throw 和 try 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">double</span> <span class="title">Divide</span>(<span class="params"><span class="keyword">double</span> x, <span class="keyword">double</span> y</span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (y == <span class="number">0</span>) </span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> DivideByZeroException();</span><br><span class="line">    <span class="keyword">return</span> x / y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">TryCatch</span>(<span class="params"><span class="keyword">string</span>[] args</span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (args.Length != <span class="number">2</span>) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="string">"Two numbers required"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> x = <span class="keyword">double</span>.Parse(args[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">double</span> y = <span class="keyword">double</span>.Parse(args[<span class="number">1</span>]);</span><br><span class="line">        Console.WriteLine(Divide(x, y));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (InvalidOperationException e) </span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(e.Message);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">finally</span> </span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"Good bye!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+checked 和 unchecked 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CheckedUnchecked</span>(<span class="params"><span class="keyword">string</span>[] args</span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="keyword">int</span>.MaxValue;</span><br><span class="line">    <span class="keyword">unchecked</span> </span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(x + <span class="number">1</span>);  <span class="comment">// Overflow</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">checked</span> </span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(x + <span class="number">1</span>);  <span class="comment">// Exception</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+lock 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Account</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">decimal</span> balance;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="keyword">object</span> sync = <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Withdraw</span>(<span class="params"><span class="keyword">decimal</span> amount</span>) </span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">lock</span> (sync) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (amount &gt; balance) </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(</span><br><span class="line">                    <span class="string">"Insufficient funds"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            balance -= amount;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+using 语句
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">UsingStatement</span>(<span class="params"><span class="keyword">string</span>[] args</span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> (TextWriter w = File.CreateText(<span class="string">"test.txt"</span>)) </span><br><span class="line">    &#123;</span><br><span class="line">        w.WriteLine(<span class="string">"Line one"</span>);</span><br><span class="line">        w.WriteLine(<span class="string">"Line two"</span>);</span><br><span class="line">        w.WriteLine(<span class="string">"Line three"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</details>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%EF%BC%8CC/" rel="tag"># 程序设计语言，C#</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/25/miniprogrammanual/" rel="next" title="小程序思维导图">
+                <i class="fa fa-chevron-left"></i> 小程序思维导图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/19/csharpgrammar-2/" rel="prev" title="C#拾遗">
+                C#拾遗 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wang bin</p>
+              <p class="site-description motion-element" itemprop="description">离离原上草 一岁一枯荣</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本"><span class="nav-number">1.</span> <span class="nav-text">基本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字"><span class="nav-number">1.1.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文关键字"><span class="nav-number">1.2.</span> <span class="nav-text">上下文关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">1.3.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语句"><span class="nav-number">1.4.</span> <span class="nav-text">语句</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wang bin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
