@@ -4,7 +4,7 @@ date: 2020-02-20
 tags: [程序设计语言，C#]
 categories: csharp程序设计语言
 ---
-C#1.0语法
+C#1.0语法（发布于2000年6月）
 <!-- more -->
 参考：<https://docs.microsoft.com/zh-cn/dotnet/csharp/>
 ## <span style="color:#0366d6;">C# 1.0</span>
@@ -209,7 +209,8 @@ public static double AddNumber(double num1, int num2)
 
 ```
 ### 方法重写
->重写基方法必须具有与 override 方法相同的签名,override 声明不能更改 virtual 方法的可访问性。 override 方法和 virtual 方法必须具有相同级别访问修饰符。
+>重写基方法必须具有与 override 方法相同的签名,override 声明不能更改 virtual 方法的可访问性。 override 方法和 virtual 方法必须具有相同级别访问修饰符。override可以扩展或修改继承的<span style="color:#0065b3;">方法、属性、索引器或事件</span>的抽象或虚拟实现
+
 ```csharp
 public class BaseC
 {
@@ -255,9 +256,10 @@ string s = "Hello Extension Methods";
 int i = s.WordCount();
 ```
 ### 可选参数
->常量，例如文本字符串或数字。
-new ValType() 形式的表达式，其中 ValType 是值类型。 请注意，这会调用该值类型的隐式无参数构造函数，该函数不是类型的实际成员。
-default(ValType) 形式的表达式，其中 ValType 是值类型。
+>参数的默认值必须由以下几种表达式中的一种来赋予：
+1.常量，例如文本字符串或数字。
+2.new ValType() 形式的表达式，其中 ValType 是值类型。 请注意，这会调用该值类型的隐式无参数构造函数，该函数不是类型的实际成员。
+3.default(ValType) 形式的表达式，其中 ValType 是值类型。
 
 ```csharp
 public void ExampleMethod(int required, int optionalInt = default(int),
@@ -270,9 +272,9 @@ public void ExampleMethod(int required, int optionalInt = default(int),
 >前两个方法调用使用位置自变量。 第一个方法同时省略了两个可选自变量，而第二个省略了最后一个自变量。 第三个方法调用向必需的参数提供位置自变量，但使用命名的自变量向 description 参数提供值，同时省略 optionalInt 自变量
 ```csharp
 var opt = new Options();
-      opt.ExampleMethod(10);
-      opt.ExampleMethod(10, 2);
-      opt.ExampleMethod(12, description: "Addition with zero:");
+    opt.ExampleMethod(10);
+    opt.ExampleMethod(10, 2);
+    opt.ExampleMethod(12, description: "Addition with zero:");
 ```
 ## <span style="color:#0366d6;">类</span>
 类的成员有：<span style="color:#0366d6;">字段，常量，属性，方法，事件，运算符，索引器，构造函数，终结器，嵌套类型</span>
@@ -481,4 +483,6 @@ class SampleClass
     // P. Ackerman's code goes here...  
 }
 ```
+## <span style="color:#0366d6;">C#1.2</span> 
+>随 Visual Studio .NET 2003 一起提供的 C# 版本 1.2。 它对语言做了一些小改进。 最值得注意的是，从此版本开始，当 IEnumerator 实现 IDisposable 时，foreach 循环中生成的代码会在 IEnumerator 上调用 Dispose。
 

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="程序设计语言，C#," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="C#2.0语法（发布于2005）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#2.0语法">
+<meta property="og:url" content="https://w20150427.github.io/2020/02/22/csharpgrammar-4/index.html">
+<meta property="og:site_name" content="王斌的博客">
+<meta property="og:description" content="C#2.0语法（发布于2005）">
+<meta property="article:published_time" content="2020-02-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-22T13:35:02.371Z">
+<meta property="article:author" content="wang bin">
+<meta property="article:tag" content="程序设计语言，C#">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://w20150427.github.io/2020/02/22/csharpgrammar-4/"/>
+
+
+
+
+
+  <title>C#2.0语法 | 王斌的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王斌的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">wang bin's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://w20150427.github.io/2020/02/22/csharpgrammar-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wang bin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王斌的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C#2.0语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
+                2020-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/csharp%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">csharp程序设计语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>C#2.0语法（发布于2005）</p>
+<a id="more"></a>
+<p>参考：<a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/csharp/</a></p>
+<h2 id="C-2-0"><a href="#C-2-0" class="headerlink" title="C# 2.0"></a><span style="color:#0366d6;">C# 2.0</span></h2><h2 id="getter-setter-单独可访问性"><a href="#getter-setter-单独可访问性" class="headerlink" title="getter/setter 单独可访问性"></a><span style="color:#0366d6;">getter/setter 单独可访问性</span></h2><blockquote>
+<p>就是在get或者set前面可以加访问修饰符</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span>(<span class="params"><span class="keyword">int</span> age</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">      <span class="keyword">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> Age &#123;</span><br><span class="line">      <span class="keyword">get</span> &#123;<span class="keyword">return</span> age;&#125;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">set</span>&#123;age=<span class="keyword">value</span>;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a><span style="color:#0366d6;">静态类</span></h2><blockquote>
+<p>以下列表提供静态类的主要功能：<br>1.只包含静态成员。<br>2.无法进行实例化。<br>3.会进行密封。<br>4.不能包含实例构造函数。<br>静态类会进行密封，因此不能继承。 它们不能继承自任何类（除了 Object）。 静态类不能包含实例构造函数；但是，它们可以包含静态构造函数。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">TemperatureConverter</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">CelsiusToFahrenheit</span>(<span class="params"><span class="keyword">string</span> temperatureCelsius</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Convert argument to double for calculations.</span></span><br><span class="line">        <span class="keyword">double</span> celsius = Double.Parse(temperatureCelsius);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Convert Celsius to Fahrenheit.</span></span><br><span class="line">        <span class="keyword">double</span> fahrenheit = (celsius * <span class="number">9</span> / <span class="number">5</span>) + <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> fahrenheit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">FahrenheitToCelsius</span>(<span class="params"><span class="keyword">string</span> temperatureFahrenheit</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Convert argument to double for calculations.</span></span><br><span class="line">        <span class="keyword">double</span> fahrenheit = Double.Parse(temperatureFahrenheit);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Convert Fahrenheit to Celsius.</span></span><br><span class="line">        <span class="keyword">double</span> celsius = (fahrenheit - <span class="number">32</span>) * <span class="number">5</span> / <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> celsius;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="可为空的值类型"><a href="#可为空的值类型" class="headerlink" title="可为空的值类型"></a><span style="color:#0366d6;">可为空的值类型</span></h2><h3 id="声明和赋值"><a href="#声明和赋值" class="headerlink" title="声明和赋值"></a>声明和赋值</h3><blockquote>
+<p>由于值类型可隐式转换为相应的可为空的值类型，因此可以像向其基础值类型赋值一样，向可为空值类型的变量赋值。 还可分配 null 值。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span>? pi = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">char</span>? letter = <span class="string">'a'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m2 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span>? m = m2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span>? flag = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// An array of a nullable type:</span></span><br><span class="line"><span class="keyword">int</span>?[] arr = <span class="keyword">new</span> <span class="keyword">int</span>?[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="提升的运算符"><a href="#提升的运算符" class="headerlink" title="提升的运算符"></a>提升的运算符</h3><blockquote>
+<p>预定义的一元运算符和二元运算符或值类型 T 支持的任何重载运算符也受相应的可为空值类型 T? 支持。 如果一个或全部两个操作数为 null ，则这些运算符（也称为提升的运算符）将生成 null；否则，运算符使用其操作数所包含的值来计算结果。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>? a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span>? b = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">int</span>? c = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">a++;        <span class="comment">// a is 11</span></span><br><span class="line">a = a * c;  <span class="comment">// a is 110</span></span><br><span class="line">a = a + b;  <span class="comment">// a is null</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对于比较运算符 &lt;、&gt;、&lt;= 和 &gt;=，如果一个或全部两个操作数都为 null，则结果为 false；否则，将比较操作数的包含值。 请勿作出如下假定：由于某个特定的比较（例如 &lt;=）返回 false，则相反的比较 (&gt;) 返回 true</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>? a = <span class="number">10</span>;</span><br><span class="line">Console.WriteLine(<span class="string">$"<span class="subst">&#123;a&#125;</span> &gt;= null is <span class="subst">&#123;a &gt;= <span class="literal">null</span>&#125;</span>"</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$"<span class="subst">&#123;a&#125;</span> &lt; null is <span class="subst">&#123;a &lt; <span class="literal">null</span>&#125;</span>"</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$"<span class="subst">&#123;a&#125;</span> == null is <span class="subst">&#123;a == <span class="literal">null</span>&#125;</span>"</span>);</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 10 &gt;= null is False</span></span><br><span class="line"><span class="comment">// 10 &lt; null is False</span></span><br><span class="line"><span class="comment">// 10 == null is False</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对于相等运算符 ==，如果两个操作数都为 null，则结果为 true；如果只有一个操作数为 null，则结果为 false；否则，将比较操作数的包含值。<br>对于不等运算符 !=，如果两个操作数都为 null，则结果为 false；如果只有一个操作数为 null，则结果为 true；否则，将比较操作数的包含值。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>? b = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">int</span>? c = <span class="literal">null</span>;</span><br><span class="line">Console.WriteLine(<span class="string">$"null &gt;= null is <span class="subst">&#123;b &gt;= c&#125;</span>"</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$"null == null is <span class="subst">&#123;b == c&#125;</span>"</span>);</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// null &gt;= null is False</span></span><br><span class="line"><span class="comment">// null == null is True</span></span><br></pre></td></tr></table></figure>
+<h3 id="装箱和取消装箱"><a href="#装箱和取消装箱" class="headerlink" title="装箱和取消装箱"></a>装箱和取消装箱</h3><blockquote>
+<p>可为空值类型的实例 T?已装箱，如下所示<br>1.如果 HasValue 返回 false，则生成空引用<br>2.如果 HasValue 返回 true，则基础值类型 T 的对应值将装箱，而不对 Nullable &lt;T&gt; 的实例进行装箱<br>可将值类型 T 的已装箱值取消装箱到相应的可为空值类型 T?</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">41</span>;</span><br><span class="line"><span class="keyword">object</span> aBoxed = a;</span><br><span class="line"><span class="keyword">int</span>? aNullable = (<span class="keyword">int</span>?)aBoxed;</span><br><span class="line">Console.WriteLine(<span class="string">$"Value of aNullable: <span class="subst">&#123;aNullable&#125;</span>"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">object</span> aNullableBoxed = aNullable;</span><br><span class="line"><span class="keyword">if</span> (aNullableBoxed <span class="keyword">is</span> <span class="keyword">int</span> valueOfA)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$"aNullableBoxed is boxed int: <span class="subst">&#123;valueOfA&#125;</span>"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// Value of aNullable: 41</span></span><br><span class="line"><span class="comment">// aNullableBoxed is boxed int: 41</span></span><br></pre></td></tr></table></figure>
+<h2 id="部分类型"><a href="#部分类型" class="headerlink" title="部分类型"></a><span style="color:#0366d6;">部分类型</span></h2><blockquote>
+<p>拆分一个类、一个结构、一个接口或一个方法的定义到两个或更多的文件中是可能的<br>partial 修饰符不可用于委托或枚举声明中</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DoWork</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GoToLunch</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="匿名方法"><a href="#匿名方法" class="headerlink" title="匿名方法"></a><span style="color:#0366d6;">匿名方法</span></h2><blockquote>
+<p>delegate 运算符创建一个可以转换为委托类型的匿名方法</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>&gt; sum = <span class="keyword">delegate</span> (<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123; <span class="keyword">return</span> a + b; &#125;;</span><br><span class="line">Console.WriteLine(sum(<span class="number">3</span>, <span class="number">4</span>));  <span class="comment">// output: 7</span></span><br></pre></td></tr></table></figure>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a><span style="color:#0366d6;">迭代器</span></h2><blockquote>
+<p>yield”不是保留字，只有在 return 或 break 关键字之前使用时才有特殊含义<br>迭代器 可用于逐步迭代集合，例如列表和数组。迭代器方法或 get 访问器可对集合执行自定义迭代。 迭代器方法使用 yield return 语句返回元素，每次返回一个。 到达 yield return 语句时，会记住当前在代码中的位置。 下次调用迭代器函数时，将从该位置重新开始执行</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="function"><span class="keyword">int</span> number <span class="keyword">in</span> <span class="title">SomeNumbers</span>(<span class="params"></span>))</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.Write(number.ToString() + <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Output: 3 5 8</span></span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> System.Collections.<span class="function">IEnumerable <span class="title">SomeNumbers</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>迭代器方法或 get 访问器的返回类型可以是IEnumerable、IEnumerable&lt;T&gt;、IEnumerator或IEnumerator&lt;T&gt;可以使用 yield break 语句来终止迭代<br>迭代器可用作一种方法，或一个 get 访问器。 不能在<span style="color:#0065b3;">事件、实例构造函数、静态构造函数或静态终结器</span>中使用迭代器。<br>必须存在从 yield return 语句中的表达式类型到迭代器返回的 IEnumerable&lt;T&gt; 类型参数的隐式转换。<br>即使将迭代器编写成方法，编译器也会将其转换为实际上是状态机的嵌套类。可使用 Ildasm.exe 工具查看</p>
+</blockquote>
+<details>
+<summary>点开查看</summary>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Zoo</span> : <span class="title">IEnumerable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Private members.</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Animal&gt; animals = <span class="keyword">new</span> List&lt;Animal&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Public methods.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddMammal</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        animals.Add(<span class="keyword">new</span> Animal &#123; Name = name, Type = Animal.TypeEnum.Mammal &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddBird</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        animals.Add(<span class="keyword">new</span> Animal &#123; Name = name, Type = Animal.TypeEnum.Bird &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerator <span class="title">GetEnumerator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (Animal theAnimal <span class="keyword">in</span> animals)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span> theAnimal.Name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Public members.</span></span><br><span class="line">    <span class="keyword">public</span> IEnumerable Mammals</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> AnimalsForType(Animal.TypeEnum.Mammal); &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> IEnumerable Birds</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> AnimalsForType(Animal.TypeEnum.Bird); &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Private methods.</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> IEnumerable <span class="title">AnimalsForType</span>(<span class="params">Animal.TypeEnum type</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (Animal theAnimal <span class="keyword">in</span> animals)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (theAnimal.Type == type)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">yield</span> <span class="keyword">return</span> theAnimal.Name;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Private class.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title">Animal</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">enum</span> TypeEnum &#123; Bird, Mammal &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> TypeEnum Type &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</details>
+
+<blockquote>
+<p>引用类实例 (theZoo) 的 foreach 语句隐式调用 GetEnumerator 方法。 引用 Birds 和 Mammals 属性的 foreach 语句使用 AnimalsForType 命名迭代器方法。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Zoo theZoo = <span class="keyword">new</span> Zoo();</span><br><span class="line"></span><br><span class="line">    theZoo.AddMammal(<span class="string">"Whale"</span>);</span><br><span class="line">    theZoo.AddMammal(<span class="string">"Rhinoceros"</span>);</span><br><span class="line">    theZoo.AddBird(<span class="string">"Penguin"</span>);</span><br><span class="line">    theZoo.AddBird(<span class="string">"Warbler"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">string</span> name <span class="keyword">in</span> theZoo)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.Write(name + <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine();</span><br><span class="line">    <span class="comment">// Output: Whale Rhinoceros Penguin Warbler</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">string</span> name <span class="keyword">in</span> theZoo.Birds)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.Write(name + <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine();</span><br><span class="line">    <span class="comment">// Output: Penguin Warbler</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">string</span> name <span class="keyword">in</span> theZoo.Mammals)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.Write(name + <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine();</span><br><span class="line">    <span class="comment">// Output: Whale Rhinoceros</span></span><br><span class="line"></span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%EF%BC%8CC/" rel="tag"># 程序设计语言，C#</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/20/csharpgrammar-3/" rel="next" title="C#1.0语法">
+                <i class="fa fa-chevron-left"></i> C#1.0语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wang bin</p>
+              <p class="site-description motion-element" itemprop="description">离离原上草 一岁一枯荣</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-2-0"><span class="nav-number">1.</span> <span class="nav-text">C# 2.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getter-setter-单独可访问性"><span class="nav-number">2.</span> <span class="nav-text">getter&#x2F;setter 单独可访问性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态类"><span class="nav-number">3.</span> <span class="nav-text">静态类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可为空的值类型"><span class="nav-number">4.</span> <span class="nav-text">可为空的值类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明和赋值"><span class="nav-number">4.1.</span> <span class="nav-text">声明和赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升的运算符"><span class="nav-number">4.2.</span> <span class="nav-text">提升的运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装箱和取消装箱"><span class="nav-number">4.3.</span> <span class="nav-text">装箱和取消装箱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分类型"><span class="nav-number">5.</span> <span class="nav-text">部分类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名方法"><span class="nav-number">6.</span> <span class="nav-text">匿名方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器"><span class="nav-number">7.</span> <span class="nav-text">迭代器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wang bin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

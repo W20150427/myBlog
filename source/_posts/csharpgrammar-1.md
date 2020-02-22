@@ -6,9 +6,7 @@ categories: csharp程序设计语言
 ---
 参考：<https://docs.microsoft.com/zh-cn/dotnet/csharp/>
 C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新式编程语言，不仅面向对象，还类型安全。 C#源于 C 语言系列，C、C++、Java 和 JavaScript 程序员很快就可以上手使用。<!-- more -->
-## 基本
-
-### 关键字
+## <span style="color:#0366d6;">关键字</span> 
 
 <table style="color:#0065b3;width:100%;border:0px;" >
 <tr>
@@ -133,7 +131,7 @@ C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新�
 </tr>
 </table>
 
-### 上下文关键字
+## <span style="color:#0366d6;">上下文关键字</span>  
  
 <table style="color:#0065b3;width:100%;border:0px;" >
 <tr>
@@ -193,7 +191,7 @@ C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新�
 </tr>
 </table>
 
-### 运算符
+## <span style="color:#0366d6;">运算符</span> 
 <table style="color:#0065b3;width:100%;border:0px;" >
 <tr>
 <td style="width:80%;border-left:0px;border-right:0px;color:black;font-weight:bold;">运算符</td>
@@ -257,7 +255,7 @@ C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新�
 </tr>
 </table>
 
-### 语句
+## <span style="color:#0366d6;">语句</span>
 
 >程序执行的操作采用语句表达。 常见操作包括声明变量、赋值、调用方法、循环访问集合，以及根据给定条件分支到一个或另一个代码块。 语句在程序中的执行顺序称为“控制流”或“执行流”。 根据程序对运行时所收到的输入的响应，在程序每次运行时控制流可能有所不同。
 语句可以是以分号结尾的单行代码，也可以是语句块中的一系列单行语句。 语句块括在括号 {} 中，并且可以包含嵌套块。
@@ -307,7 +305,7 @@ C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新�
 </tr>
 <tr>
 <td style="width:15%;border-left:0px;border-right:0px;">fixed 语句	</td>
-<td style="width:85%;border-left:0px;border-right:0px;">fixed 语句禁止垃圾回收器重定位可移动的变量。 有关详细信息，请参阅 fixed。/td>
+<td style="width:85%;border-left:0px;border-right:0px;">fixed 语句禁止垃圾回收器重定位可移动的变量。 有关详细信息，请参阅 fixed。</td>
 </tr>
 <tr>
 <td style="width:15%;border-left:0px;border-right:0px;">lock 语句</td>
@@ -325,7 +323,8 @@ C#发布于2000年6月，（读作“See Sharp”）是一种简单易用的新�
 <details>
 <summary>展开查看</summary>
 <pre><code>
-局部变量声明
+
+局部变量声明 
 ```csharp
 static void Declarations(string[] args)
 {

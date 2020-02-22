@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="王斌的博客">
 <meta property="og:description" content="C#常见知识点整理">
 <meta property="article:published_time" content="2020-02-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-02-20T13:16:47.174Z">
+<meta property="article:modified_time" content="2020-02-21T02:37:24.018Z">
 <meta property="article:author" content="wang bin">
 <meta property="article:tag" content="程序设计语言，C#">
 <meta name="twitter:card" content="summary">
@@ -397,12 +397,12 @@
 <p>对于内置数值类型，如果要存储的值无需截断或四舍五入即可适应变量，则可以进行隐式转换。 对于整型类型，这意味着源类型的范围是目标类型范围的正确子集。例如，long 类型的变量（64 位整数）能够存储 int（32 位整数）可存储的任何值。 在下面的示例中，编译器先将右侧的 num 值隐式转换为 long 类型，再将它赋给 bigNum。</p>
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Implicit conversion. A long can</span></span><br><span class="line"><span class="comment">// hold any value an int can hold, and more!</span></span><br><span class="line"><span class="keyword">int</span> num = <span class="number">2147483647</span>;</span><br><span class="line"><span class="keyword">long</span> bigNum = num;</span><br></pre></td></tr></table></figure>
-<h3 id="隐式转换-1"><a href="#隐式转换-1" class="headerlink" title="隐式转换"></a>隐式转换</h3><blockquote>
+<h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><blockquote>
 <p>但是，如果进行转换可能会导致信息丢失，则编译器会要求执行显式转换，显式转换也称为强制转换。强制转换是显式告知编译器你打算进行转换且你知道可能会发生数据丢失的一种方式。若要执行强制转换，请在要转换的值或变量前面的括号中指定要强制转换到的类型。下面的程序将 double 强制转换为 int。如不强制转换则该程序不会进行编译。</p>
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x = <span class="number">1234.7</span>;</span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="comment">// Cast double to int.</span></span><br><span class="line">a = (<span class="keyword">int</span>)x;</span><br></pre></td></tr></table></figure>
 <h3 id="用户定义转换运算符"><a href="#用户定义转换运算符" class="headerlink" title="用户定义转换运算符"></a>用户定义转换运算符</h3><blockquote>
-<p>operator和implicit(隐式)或explicit(显示)关键字分别用于定义隐式转换或显式转换。定义转换的类型必须是该转换的源类型或目标类型。可用两种类型中的任何一种类型来定义两种用户定义类型之间的转换。</p>
+<p>operator和implicit(隐式)或explicit(显示)关键字分别用于定义隐式转换或显式转换。</p>
 </blockquote>
 <details>
 <summary>展开查看</summary>
@@ -538,7 +538,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -593,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型的默认值"><span class="nav-number">1.</span> <span class="nav-text">类型的默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制转换和类型转换"><span class="nav-number">2.</span> <span class="nav-text">强制转换和类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式转换"><span class="nav-number">2.1.</span> <span class="nav-text">隐式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式转换-1"><span class="nav-number">2.2.</span> <span class="nav-text">隐式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户定义转换运算符"><span class="nav-number">2.3.</span> <span class="nav-text">用户定义转换运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用帮助程序类进行转换"><span class="nav-number">2.4.</span> <span class="nav-text">使用帮助程序类进行转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装箱和取消装箱"><span class="nav-number">3.</span> <span class="nav-text">装箱和取消装箱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#装箱"><span class="nav-number">3.1.</span> <span class="nav-text">装箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆箱"><span class="nav-number">3.2.</span> <span class="nav-text">拆箱</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型的默认值"><span class="nav-number">1.</span> <span class="nav-text">类型的默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制转换和类型转换"><span class="nav-number">2.</span> <span class="nav-text">强制转换和类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式转换"><span class="nav-number">2.1.</span> <span class="nav-text">隐式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制转换"><span class="nav-number">2.2.</span> <span class="nav-text">强制转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户定义转换运算符"><span class="nav-number">2.3.</span> <span class="nav-text">用户定义转换运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用帮助程序类进行转换"><span class="nav-number">2.4.</span> <span class="nav-text">使用帮助程序类进行转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装箱和取消装箱"><span class="nav-number">3.</span> <span class="nav-text">装箱和取消装箱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#装箱"><span class="nav-number">3.1.</span> <span class="nav-text">装箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆箱"><span class="nav-number">3.2.</span> <span class="nav-text">拆箱</span></a></li></ol></li></ol></div>
             
 
           </div>
