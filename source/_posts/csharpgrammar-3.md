@@ -4,10 +4,10 @@ date: 2020-02-20
 tags: [程序设计语言，C#]
 categories: csharp程序设计语言
 ---
-C#1.0语法（发布于2000年6月）
+C#1.0语法（发布于2000年6月,.NET Framework 1.0）
 <!-- more -->
 参考：<https://docs.microsoft.com/zh-cn/dotnet/csharp/>
-## <span style="color:#0366d6;">C# 1.0</span>
+# <span style="color:#0366d6;">C# 1.0</span>
 ## <span style="color:#0366d6;">数据类型</span>
 
 <details>
@@ -235,47 +235,6 @@ public class DerivedC : BaseC
     new public void Invoke() { }
 }
 ```
-### 扩展方法
->扩展方法被定义为静态方法，但它们是通过实例方法语法进行调用的。 它们的第一个参数指定该方法作用于哪个类型，并且该参数以 this 修饰符为前缀。 仅当你使用 using 指令将命名空间显式导入到源代码中之后，扩展方法才位于范围中。
-```csharp
-namespace ExtensionMethods
-{
-    public static class MyExtensions
-    {
-        public static int WordCount(this String str)
-        {
-            return str.Split(new char[] { ' ', '.', '?' }, 
-                             StringSplitOptions.RemoveEmptyEntries).Length;
-        }
-    }   
-}
-```
-```csharp
-using ExtensionMethods; 
-string s = "Hello Extension Methods";  
-int i = s.WordCount();
-```
-### 可选参数
->参数的默认值必须由以下几种表达式中的一种来赋予：
-1.常量，例如文本字符串或数字。
-2.new ValType() 形式的表达式，其中 ValType 是值类型。 请注意，这会调用该值类型的隐式无参数构造函数，该函数不是类型的实际成员。
-3.default(ValType) 形式的表达式，其中 ValType 是值类型。
-
-```csharp
-public void ExampleMethod(int required, int optionalInt = default(int),
-                             string description = "Optional Description")
-   {
-      Console.WriteLine("{0}: {1} + {2} = {3}", description, required, 
-                        optionalInt, required + optionalInt);
-   }
-```
->前两个方法调用使用位置自变量。 第一个方法同时省略了两个可选自变量，而第二个省略了最后一个自变量。 第三个方法调用向必需的参数提供位置自变量，但使用命名的自变量向 description 参数提供值，同时省略 optionalInt 自变量
-```csharp
-var opt = new Options();
-    opt.ExampleMethod(10);
-    opt.ExampleMethod(10, 2);
-    opt.ExampleMethod(12, description: "Addition with zero:");
-```
 ## <span style="color:#0366d6;">类</span>
 类的成员有：<span style="color:#0366d6;">字段，常量，属性，方法，事件，运算符，索引器，构造函数，终结器，嵌套类型</span>
 ```csharp
@@ -484,5 +443,5 @@ class SampleClass
 }
 ```
 ## <span style="color:#0366d6;">C#1.2</span> 
->随 Visual Studio .NET 2003 一起提供的 C# 版本 1.2。 它对语言做了一些小改进。 最值得注意的是，从此版本开始，当 IEnumerator 实现 IDisposable 时，foreach 循环中生成的代码会在 IEnumerator 上调用 Dispose。
+>随 Visual Studio .NET 2003 一起提供的 C# 版本 1.2（.NET Framework 1.1）。 它对语言做了一些小改进。 最值得注意的是，从此版本开始，当 IEnumerator 实现 IDisposable 时，foreach 循环中生成的代码会在 IEnumerator 上调用 Dispose。
 

@@ -40,7 +40,7 @@ C#常见知识点整理
 <td style="width:85%;border-left:0px;border-right:0px;">表达式 (E)0 生成的值，其中 E 是枚举标识符。</td>
 </tr>
 <tr>
-<td style="width:15%;border-left:0px;border-right:0px;">struct/td>
+<td style="width:15%;border-left:0px;border-right:0px;">struct</td>
 <td style="width:85%;border-left:0px;border-right:0px;">通过如下设置生成的值：将所有值类型的字段设置为其默认值，将所有引用类型的字段设置为 null。</td>
 </tr>
 <tr>
