@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="C#6.0语法（发布于 2015，.NET Framework 4.6）C# 在 3.0 版和 5.0 版对面向对象的语言添加了主要的新功能。 版本 6.0 随 Visual Studio 2015 一起发布，通过该版本，它不再推出主导性的杀手锏，而是发布了很多使得 C# 编程更有效率的小功能。">
+<meta name="description" content="C#6.0语法（发布于 2015，.NET Framework 4.6 .NET Core 1.0 .NET Core 1.1）C# 在 3.0 版和 5.0 版对面向对象的语言添加了主要的新功能。 版本 6.0 随 Visual Studio 2015 一起发布，通过该版本，它不再推出主导性的杀手锏，而是发布了很多使得 C# 编程更有效率的小功能。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#6.0语法">
 <meta property="og:url" content="https://w20150427.github.io/2020/02/27/csharpgrammar-8/index.html">
 <meta property="og:site_name" content="王斌的博客">
-<meta property="og:description" content="C#6.0语法（发布于 2015，.NET Framework 4.6）C# 在 3.0 版和 5.0 版对面向对象的语言添加了主要的新功能。 版本 6.0 随 Visual Studio 2015 一起发布，通过该版本，它不再推出主导性的杀手锏，而是发布了很多使得 C# 编程更有效率的小功能。">
+<meta property="og:description" content="C#6.0语法（发布于 2015，.NET Framework 4.6 .NET Core 1.0 .NET Core 1.1）C# 在 3.0 版和 5.0 版对面向对象的语言添加了主要的新功能。 版本 6.0 随 Visual Studio 2015 一起发布，通过该版本，它不再推出主导性的杀手锏，而是发布了很多使得 C# 编程更有效率的小功能。">
 <meta property="article:published_time" content="2020-02-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-02-25T14:06:48.158Z">
+<meta property="article:modified_time" content="2020-02-26T02:09:30.045Z">
 <meta property="article:author" content="wang bin">
 <meta property="article:tag" content="程序设计语言，C#">
 <meta name="twitter:card" content="summary">
@@ -351,10 +351,75 @@
       
 
       
-        <p>C#6.0语法（发布于 2015，.NET Framework 4.6）<br>C# 在 3.0 版和 5.0 版对面向对象的语言添加了主要的新功能。 版本 6.0 随 Visual Studio 2015 一起发布，通过该版本，它不再推出主导性的杀手锏，而是发布了很多使得 C# 编程更有效率的小功能。</p>
+        <p>C#6.0语法（发布于 2015，.NET Framework 4.6 .NET Core 1.0 .NET Core 1.1）<br>C# 在 3.0 版和 5.0 版对面向对象的语言添加了主要的新功能。 版本 6.0 随 Visual Studio 2015 一起发布，通过该版本，它不再推出主导性的杀手锏，而是发布了很多使得 C# 编程更有效率的小功能。</p>
 <a id="more"></a>
 <p>参考：<a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/csharp/</a></p>
-<h1 id="C-6-0语法"><a href="#C-6-0语法" class="headerlink" title="C#6.0语法"></a><span style="color:#0366d6;">C#6.0语法</span></h1>
+<h1 id="C-6-0语法"><a href="#C-6-0语法" class="headerlink" title="C#6.0语法"></a><span style="color:#0366d6;">C#6.0语法</span></h1><h2 id="只读自动属性"><a href="#只读自动属性" class="headerlink" title="只读自动属性"></a><span style="color:#0366d6;">只读自动属性</span></h2><blockquote>
+<p>只读自动属性 提供了更简洁的语法来创建不可变类型</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> FirstName &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> LastName &#123; <span class="keyword">get</span>;  &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>FirstName 和 LastName 属性只能在同一个类的构造函数的主体中设置</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Student</span>(<span class="params"><span class="keyword">string</span> firstName, <span class="keyword">string</span> lastName</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (IsNullOrWhiteSpace(lastName))</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(message: <span class="string">"Cannot be blank"</span>, paramName: <span class="keyword">nameof</span>(lastName));</span><br><span class="line">    FirstName = firstName;</span><br><span class="line">    LastName = lastName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自动属性初始化表达式"><a href="#自动属性初始化表达式" class="headerlink" title="自动属性初始化表达式"></a><span style="color:#0366d6;">自动属性初始化表达式</span></h2><blockquote>
+<p>自动属性初始值设定项 可让你在属性声明中声明自动属性的初始值</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ICollection&lt;<span class="keyword">double</span>&gt; Grades &#123; <span class="keyword">get</span>; &#125; = <span class="keyword">new</span> List&lt;<span class="keyword">double</span>&gt;();</span><br></pre></td></tr></table></figure>
+<h2 id="Expression-bodied-函数成员"><a href="#Expression-bodied-函数成员" class="headerlink" title="Expression-bodied 函数成员"></a><span style="color:#0366d6;">Expression-bodied 函数成员</span></h2><blockquote>
+<p>你编写的许多成员是可以作为单个表达式的单个语句。 改为编写 expression-bodied 成员。 这适用于方法和只读属性。 例如，重写 ToString() 通常是理想之选</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">ToString</span>(<span class="params"></span>)</span> =&gt; <span class="string">$"<span class="subst">&#123;LastName&#125;</span>, <span class="subst">&#123;FirstName&#125;</span>"</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>也可以将此语法用于只读属性：</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> FullName =&gt; <span class="string">$"<span class="subst">&#123;FirstName&#125;</span> <span class="subst">&#123;LastName&#125;</span>"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="using-static"><a href="#using-static" class="headerlink" title="using static"></a><span style="color:#0366d6;">using static</span></h2><blockquote>
+<p>using static 增强功能可用于导入单个类的静态方法。 指定要使用的类</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">static</span> System.Math;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用using static时，扩展方法不作为静态方法导入，只有普通的静态方法导入</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">static</span> System.String;</span><br></pre></td></tr></table></figure>
+<h2 id="Null-条件运算符"><a href="#Null-条件运算符" class="headerlink" title="Null 条件运算符"></a><span style="color:#0366d6;">Null 条件运算符</span></h2><blockquote>
+<p>如果 Person 对象是 null，则将变量 first 赋值为 null。 否则，将 FirstName 属性的值分配给该变量。 最重要的是，?. 意味着当 person 变量为 null 时，此行代码不会生成 NullReferenceException。 它会短路并返回 null。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> first = person?.FirstName;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>还可以将 ?. 用于有条件地调用方法。 具有 null 条件运算符的成员函数的最常见用法是用于安全地调用可能为 null 的委托（或事件处理程序）。 通过使用 ?. 运算符调用该委托的 Invoke 方法来访问成员。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// preferred in C# 6:</span></span><br><span class="line"><span class="keyword">this</span>.SomethingHappened?.Invoke(<span class="keyword">this</span>, eventArgs);</span><br></pre></td></tr></table></figure>
+<h2 id="字符串内插"><a href="#字符串内插" class="headerlink" title="字符串内插"></a><span style="color:#0366d6;">字符串内插</span></h2><blockquote>
+<p>使用 $ 作为字符串的开头，并使用 { 和 } 之间的表达式代替序号：</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> FullName =&gt; <span class="string">$"<span class="subst">&#123;FirstName&#125;</span> <span class="subst">&#123;LastName&#125;</span>"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="异常筛选器"><a href="#异常筛选器" class="headerlink" title="异常筛选器"></a><span style="color:#0366d6;">异常筛选器</span></h2><blockquote>
+<p>异常筛选器是确定何时应该应用给定的 catch 子句的子句 。 如果用于异常筛选器的表达式计算结果为 true，则 catch 子句将对异常执行正常处理。 如果表达式计算结果为 false，则将跳过 catch 子句。 一种用途是检查有关异常的信息，以确定 catch 子句是否可以处理该异常</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="keyword">string</span>&gt; <span class="title">MakeRequest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    WebRequestHandler webRequestHandler = <span class="keyword">new</span> WebRequestHandler();</span><br><span class="line">    webRequestHandler.AllowAutoRedirect = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">using</span> (HttpClient client = <span class="keyword">new</span> HttpClient(webRequestHandler))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> stringTask = client.GetStringAsync(<span class="string">"https://docs.microsoft.com/en-us/dotnet/about/"</span>);</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> responseText = <span class="keyword">await</span> stringTask;</span><br><span class="line">            <span class="keyword">return</span> responseText;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (System.Net.Http.HttpRequestException e) <span class="keyword">when</span> (e.Message.Contains(<span class="string">"301"</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"Site Moved"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="nameof-表达式"><a href="#nameof-表达式" class="headerlink" title="nameof 表达式"></a><span style="color:#0366d6;">nameof 表达式</span></h2><blockquote>
+<p>nameof 表达式的计算结果为符号的名称。 每当需要变量、属性或成员字段的名称时，这是让工具正常运行的好办法。 nameof 的其中一个最常见的用途是提供引起异常的符号的名称</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (IsNullOrWhiteSpace(lastName))</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(message: <span class="string">"Cannot be blank"</span>, paramName: <span class="keyword">nameof</span>(lastName));</span><br></pre></td></tr></table></figure>
+<h2 id="Catch-和-Finally-块中的-Await"><a href="#Catch-和-Finally-块中的-Await" class="headerlink" title="Catch 和 Finally 块中的 Await"></a><span style="color:#0366d6;">Catch 和 Finally 块中的 Await</span></h2><blockquote>
+<p>C# 5 对于可放置 await 表达式的位置有若干限制。 使用 C# 6，现在可以在 catch 或 finally 表达式中使用 await。 这通常用于日志记录方案：</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="keyword">string</span>&gt; <span class="title">MakeRequestAndLogFailures</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">await</span> logMethodEntrance();</span><br><span class="line">    <span class="keyword">var</span> client = <span class="keyword">new</span> System.Net.Http.HttpClient();</span><br><span class="line">    <span class="keyword">var</span> streamTask = client.GetStringAsync(<span class="string">"https://localHost:10000"</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> responseText = <span class="keyword">await</span> streamTask;</span><br><span class="line">        <span class="keyword">return</span> responseText;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (System.Net.Http.HttpRequestException e) <span class="keyword">when</span> (e.Message.Contains(<span class="string">"301"</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">await</span> logError(<span class="string">"Recovered from redirect"</span>, e);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Site Moved"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">finally</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">await</span> logMethodExit();</span><br><span class="line">        client.Dispose();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用索引器初始化关联集合"><a href="#使用索引器初始化关联集合" class="headerlink" title="使用索引器初始化关联集合"></a><span style="color:#0366d6;">使用索引器初始化关联集合</span></h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Dictionary&lt;<span class="keyword">int</span>, <span class="keyword">string</span>&gt; messages = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">int</span>, <span class="keyword">string</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    &#123; <span class="number">404</span>, <span class="string">"Page not Found"</span>&#125;,</span><br><span class="line">    &#123; <span class="number">302</span>, <span class="string">"Page moved, but left a forwarding address."</span>&#125;,</span><br><span class="line">    &#123; <span class="number">500</span>, <span class="string">"The web server can't come out to play today."</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Dictionary&lt;<span class="keyword">int</span>, <span class="keyword">string</span>&gt; webErrors = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">int</span>, <span class="keyword">string</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">404</span>] = <span class="string">"Page not Found"</span>,</span><br><span class="line">    [<span class="meta">302</span>] = <span class="string">"Page moved, but left a forwarding address."</span>,</span><br><span class="line">    [<span class="meta">500</span>] = <span class="string">"The web server can't come out to play today."</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="集合初始值设定项中的扩展-Add-方法"><a href="#集合初始值设定项中的扩展-Add-方法" class="headerlink" title="集合初始值设定项中的扩展 Add 方法"></a><span style="color:#0366d6;">集合初始值设定项中的扩展 Add 方法</span></h2><blockquote>
+<p>todo</p>
+</blockquote>
+<h2 id="改进了Task-Run重载解析"><a href="#改进了Task-Run重载解析" class="headerlink" title="改进了Task.Run重载解析"></a><span style="color:#0366d6;">改进了Task.Run重载解析</span></h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> Task <span class="title">DoThings</span>(<span class="params"></span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> Task.FromResult(<span class="number">0</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>早期版本的 C# 中，使用方法组语法调用该方法将失败</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Task.Run(DoThings);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>早期的编译器无法正确区分 Task.Run(Action) 和 Task.Run(Func<Task>()),<br>早期版本中，需要使用 lambda 表达式作为参数,貌似对Action仍不支持（todo）</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Task.Run(() =&gt; DoThings());</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -394,8 +459,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/28/csharpgrammar-9/" rel="prev" title="C#6.0语法">
-                C#6.0语法 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/28/csharpgrammar-9/" rel="prev" title="C#7.0语法">
+                C#7.0语法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -528,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-6-0语法"><span class="nav-number">1.</span> <span class="nav-text">C#6.0语法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-6-0语法"><span class="nav-number">1.</span> <span class="nav-text">C#6.0语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#只读自动属性"><span class="nav-number">1.1.</span> <span class="nav-text">只读自动属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动属性初始化表达式"><span class="nav-number">1.2.</span> <span class="nav-text">自动属性初始化表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Expression-bodied-函数成员"><span class="nav-number">1.3.</span> <span class="nav-text">Expression-bodied 函数成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#using-static"><span class="nav-number">1.4.</span> <span class="nav-text">using static</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Null-条件运算符"><span class="nav-number">1.5.</span> <span class="nav-text">Null 条件运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串内插"><span class="nav-number">1.6.</span> <span class="nav-text">字符串内插</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常筛选器"><span class="nav-number">1.7.</span> <span class="nav-text">异常筛选器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nameof-表达式"><span class="nav-number">1.8.</span> <span class="nav-text">nameof 表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Catch-和-Finally-块中的-Await"><span class="nav-number">1.9.</span> <span class="nav-text">Catch 和 Finally 块中的 Await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用索引器初始化关联集合"><span class="nav-number">1.10.</span> <span class="nav-text">使用索引器初始化关联集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合初始值设定项中的扩展-Add-方法"><span class="nav-number">1.11.</span> <span class="nav-text">集合初始值设定项中的扩展 Add 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进了Task-Run重载解析"><span class="nav-number">1.12.</span> <span class="nav-text">改进了Task.Run重载解析</span></a></li></ol></li></ol></div>
             
 
           </div>
