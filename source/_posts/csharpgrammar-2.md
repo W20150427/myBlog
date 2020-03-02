@@ -133,3 +133,64 @@ int i = 123;      // a value type
 object o = i;     // boxing
 int j = (int)o;   // unboxing
 ```
+ ## <span style="color:#0366d6;">访问修饰符</span>
+<table style="color:#0065b3;width:100%;border:0px;" >
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;color:black;font-weight:bold;">声明的可访问性</td>
+<td style="width:85%;border-left:0px;border-right:0px;color:black;font-weight:bold;">含义</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">public</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed by any other code in the same assembly or another assembly that references it.Access is not restricted</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">protected</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed only by code in the same class, or in a class that is derived from that class.Access is limited to the containing class or types derived from the containing class.</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">internal</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed by any code in the same assembly, but not from another assembly.Access is limited to the current assembly.</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">protected internal</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed by any code in the assembly in which it's declared, or from within a derived class in another assembly.Access is limited to the current assembly or types derived from the containing class.</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">private</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed only by code in the same class or struct.Access is limited to the containing type.</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">private protected</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed only within its declaring assembly, by code in the same class or in a type that is derived from that class.Access is limited to the containing class or types derived from the containing class within the current assembly.</td>
+</tr>
+</table>
+
+>未嵌套在其他类型中的顶级类型只能具有 internal 或 public 可访问性。 这些类型的默认可访问性为 internal。
+作为其他类型的成员的嵌套类型可以具有如下表所示的声明的可访问性。
+<table style="color:#0065b3;width:100%;border:0px;" >
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;color:black;font-weight:bold;">成员</td>
+<td style="width:30%;border-left:0px;border-right:0px;color:black;font-weight:bold;">默认成员可访问性</td>
+<td style="width:55%;border-left:0px;border-right:0px;color:black;font-weight:bold;">允许的成员的声明的可访问性</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">enum</td>
+<td style="width:30%;border-left:0px;border-right:0px;">public</td>
+<td style="width:55%;border-left:0px;border-right:0px;">None</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">class</td>
+<td style="width:30%;border-left:0px;border-right:0px;">private</td>
+<td style="width:55%;border-left:0px;border-right:0px;">public,protected,internal,private,protected internal,private protected</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">interface</td>
+<td style="width:30%;border-left:0px;border-right:0px;">public</td>
+<td style="width:55%;border-left:0px;border-right:0px;">None</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">struct</td>
+<td style="width:30%;border-left:0px;border-right:0px;">private</td>
+<td style="width:55%;border-left:0px;border-right:0px;">public internal private</td>
+</tr>
+</table>

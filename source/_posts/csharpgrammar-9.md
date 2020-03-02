@@ -773,6 +773,9 @@ PrintOrderDetails(sellerName: "Gift Shop", 31, productName: "Red Mug");
 // This generates CS1738: Named argument specifications must appear after all fixed arguments have been specified.
 PrintOrderDetails(productName: "Red Mug", 31, "Gift Shop");
 ```
+## <span style="color:#0366d6;">in</span>
+>作为 in 参数传递的变量在方法调用中传递之前必须进行初始化。 但是，所调用的方法可能不会分配值或修改参数。
+in 参数修饰符可在 C# 7.2 及更高版本中使用。 以前的版本生成编译器错误 CS8107（“‘readonly 引用’功能在 C# 7.0 中不可用。 请使用语言版本 7.2 或更高版本。”）
 ## <span style="color:#0366d6;">private protected 访问修饰符</span>
 >新的复合访问修饰符：private protected 指示可通过包含同一程序集中声明的类或派生类来访问成员。 虽然 protected internal 允许通过同一程序集中的类或派生类进行访问，但 private protected 限制对同一程序集中声明的派生类的访问。
 ```csharp
@@ -823,3 +826,21 @@ ref var r = ref (arr != null ? ref arr[0] : ref otherArr[0]);
 ```
 ## <span style="color:#0366d6;">安全高效的代码的增强功能</span>
 >todo
+## <span style="color:#0366d6;">C# 7.3</span>
+### <span style="color:#0366d6;">相等和元组</span>
+>从 C# 7.3 开始，元组类型支持 == 和 != 运算符。 这些运算符按顺序将左边参数的每个成员与右边参数的每个成员进行比较。 这些比较将发生短路。 只要有一对不相等，它们即会停止计算成员。 以下代码示例使用 ==，但比较规则均适用于 !=。
+```csharp
+var left = (a: 5, b: 10);
+var right = (a: 5, b: 10);
+Console.WriteLine(left == right); // displays 'true'
+```
+>元组成员名称不参与相等测试。 但是，如果其中一个操作数是含有显式名称的元组文本，则当这些名称与其他操作数的名称不匹配时，编译器将生成警告 CS8383。 在两个操作数都为元组文本的情况下，警告位于右侧操作数，
+```csharp
+(int a, string b) pair = (1, "Hello");
+(int z, string y) another = (1, "Hello");
+Console.WriteLine(pair == another); // true. Member names don't participate.
+Console.WriteLine(pair == (z: 1, y: "Hello")); // warning: literal contains different member nam
+```
+### <span style="color:#0366d6;">其它todo</span>
+
+

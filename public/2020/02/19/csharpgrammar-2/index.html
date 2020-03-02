@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="王斌的博客">
 <meta property="og:description" content="C#常见知识点整理">
 <meta property="article:published_time" content="2020-02-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-02-23T08:05:30.239Z">
+<meta property="article:modified_time" content="2020-03-02T07:24:38.956Z">
 <meta property="article:author" content="wang bin">
 <meta property="article:tag" content="程序设计语言，C#">
 <meta name="twitter:card" content="summary">
@@ -419,7 +419,67 @@
 <p>取消装箱是从 object 类型到值类型或从接口类型到实现该接口的值类型的显式转换。取消装箱操作包括：<br>1.检查对象实例，以确保它是给定值类型的装箱值。<br>2.将该值从实例复制到值类型变量中。</p>
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">123</span>;      <span class="comment">// a value type</span></span><br><span class="line"><span class="keyword">object</span> o = i;     <span class="comment">// boxing</span></span><br><span class="line"><span class="keyword">int</span> j = (<span class="keyword">int</span>)o;   <span class="comment">// unboxing</span></span><br></pre></td></tr></table></figure>
+<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a><span style="color:#0366d6;">访问修饰符</span></h2><table style="color:#0065b3;width:100%;border:0px;" >
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;color:black;font-weight:bold;">声明的可访问性</td>
+<td style="width:85%;border-left:0px;border-right:0px;color:black;font-weight:bold;">含义</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">public</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed by any other code in the same assembly or another assembly that references it.Access is not restricted</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">protected</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed only by code in the same class, or in a class that is derived from that class.Access is limited to the containing class or types derived from the containing class.</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">internal</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed by any code in the same assembly, but not from another assembly.Access is limited to the current assembly.</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">protected internal</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed by any code in the assembly in which it's declared, or from within a derived class in another assembly.Access is limited to the current assembly or types derived from the containing class.</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">private</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed only by code in the same class or struct.Access is limited to the containing type.</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">private protected</td>
+<td style="width:85%;border-left:0px;border-right:0px;">The type or member can be accessed only within its declaring assembly, by code in the same class or in a type that is derived from that class.Access is limited to the containing class or types derived from the containing class within the current assembly.</td>
+</tr>
+</table>
 
+<blockquote>
+<p>未嵌套在其他类型中的顶级类型只能具有 internal 或 public 可访问性。 这些类型的默认可访问性为 internal。<br>作为其他类型的成员的嵌套类型可以具有如下表所示的声明的可访问性。</p>
+</blockquote>
+<table style="color:#0065b3;width:100%;border:0px;" >
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;color:black;font-weight:bold;">成员</td>
+<td style="width:30%;border-left:0px;border-right:0px;color:black;font-weight:bold;">默认成员可访问性</td>
+<td style="width:55%;border-left:0px;border-right:0px;color:black;font-weight:bold;">允许的成员的声明的可访问性</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">enum</td>
+<td style="width:30%;border-left:0px;border-right:0px;">public</td>
+<td style="width:55%;border-left:0px;border-right:0px;">None</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">class</td>
+<td style="width:30%;border-left:0px;border-right:0px;">private</td>
+<td style="width:55%;border-left:0px;border-right:0px;">public,protected,internal,private,protected internal,private protected</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">interface</td>
+<td style="width:30%;border-left:0px;border-right:0px;">public</td>
+<td style="width:55%;border-left:0px;border-right:0px;">None</td>
+</tr>
+<tr>
+<td style="width:15%;border-left:0px;border-right:0px;">struct</td>
+<td style="width:30%;border-left:0px;border-right:0px;">private</td>
+<td style="width:55%;border-left:0px;border-right:0px;">public internal private</td>
+</tr>
+</table>
       
     </div>
     
@@ -593,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型的默认值"><span class="nav-number">1.</span> <span class="nav-text">类型的默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制转换和类型转换"><span class="nav-number">2.</span> <span class="nav-text">强制转换和类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式转换"><span class="nav-number">2.1.</span> <span class="nav-text">隐式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制转换"><span class="nav-number">2.2.</span> <span class="nav-text">强制转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户定义转换运算符"><span class="nav-number">2.3.</span> <span class="nav-text">用户定义转换运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用帮助程序类进行转换"><span class="nav-number">2.4.</span> <span class="nav-text">使用帮助程序类进行转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装箱和取消装箱"><span class="nav-number">3.</span> <span class="nav-text">装箱和取消装箱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#装箱"><span class="nav-number">3.1.</span> <span class="nav-text">装箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆箱"><span class="nav-number">3.2.</span> <span class="nav-text">拆箱</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型的默认值"><span class="nav-number">1.</span> <span class="nav-text">类型的默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制转换和类型转换"><span class="nav-number">2.</span> <span class="nav-text">强制转换和类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式转换"><span class="nav-number">2.1.</span> <span class="nav-text">隐式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制转换"><span class="nav-number">2.2.</span> <span class="nav-text">强制转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户定义转换运算符"><span class="nav-number">2.3.</span> <span class="nav-text">用户定义转换运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用帮助程序类进行转换"><span class="nav-number">2.4.</span> <span class="nav-text">使用帮助程序类进行转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装箱和取消装箱"><span class="nav-number">3.</span> <span class="nav-text">装箱和取消装箱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#装箱"><span class="nav-number">3.1.</span> <span class="nav-text">装箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆箱"><span class="nav-number">3.2.</span> <span class="nav-text">拆箱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问修饰符"><span class="nav-number">4.</span> <span class="nav-text">访问修饰符</span></a></li></ol></div>
             
 
           </div>
