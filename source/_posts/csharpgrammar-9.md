@@ -104,6 +104,7 @@ private static void DisplayFirstNumber(string[] args)
       Console.WriteLine($"{arg} is not a number.");                            
 }
 ```
+
 ### null 合并运算符
 ```csharp
 public string Name
@@ -776,6 +777,29 @@ PrintOrderDetails(productName: "Red Mug", 31, "Gift Shop");
 ## <span style="color:#0366d6;">in</span>
 >作为 in 参数传递的变量在方法调用中传递之前必须进行初始化。 但是，所调用的方法可能不会分配值或修改参数。
 in 参数修饰符可在 C# 7.2 及更高版本中使用。 以前的版本生成编译器错误 CS8107（“‘readonly 引用’功能在 C# 7.0 中不可用。 请使用语言版本 7.2 或更高版本。”）
+
+>通过理解使用 in 参数的动机，可以理解使用按值方法和使用 in 参数方法的重载决策规则。 定义使用 in 参数的方法是一项潜在的性能优化。 某些 struct 类型参数可能很大，在紧凑的循环或关键代码路径中调用方法时，复制这些结构的成本就很高。 方法声明 in 参数以指定参数可能按引用安全传递，因为所调用的方法不修改该参数的状态。 按引用传递这些参数可以避免（可能产生的）高昂的复制成本。
+
+```csharp
+static void Method(int argument)
+{
+    // implementation removed
+}
+
+static void Method(in int argument)
+{
+    // implementation removed
+}
+
+Method(5); // Calls overload passed by value
+Method(5L); // CS1503: no implicit conversion from long to int
+short s = 0;
+Method(s); // Calls overload passed by value.
+Method(in s); // CS1503: cannot convert from in short to in int
+int i = 42;
+Method(i); // Calls overload passed by value
+Method(in i); // passed by readonly reference, explicitly using `in`
+```
 ## <span style="color:#0366d6;">private protected 访问修饰符</span>
 >新的复合访问修饰符：private protected 指示可通过包含同一程序集中声明的类或派生类来访问成员。 虽然 protected internal 允许通过同一程序集中的类或派生类进行访问，但 private protected 限制对同一程序集中声明的派生类的访问。
 ```csharp
