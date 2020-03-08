@@ -28,23 +28,23 @@ Console.WriteLine(i);  // output: 17
 ```csharp
 static int WriteLinesToFile(IEnumerable<string> lines)
 {
-    using var file = new System.IO.StreamWriter("WriteLines2.txt");
-    // Notice how we declare skippedLines after the using statement.
-    int skippedLines = 0;
-    foreach (string line in lines)
+using var file = new System.IO.StreamWriter("WriteLines2.txt");
+// Notice how we declare skippedLines after the using statement.
+int skippedLines = 0;
+foreach (string line in lines)
+{
+    if (!line.Contains("Second"))
     {
-        if (!line.Contains("Second"))
-        {
-            file.WriteLine(line);
-        }
-        else
-        {
-            skippedLines++;
-        }
+        file.WriteLine(line);
     }
-    // Notice how skippedLines is in scope here.
-    return skippedLines;
-    // file is disposed here
+    else
+    {
+        skippedLines++;
+    }
+}
+// Notice how skippedLines is in scope here.
+return skippedLines;
+// file is disposed here
 }
 ```
 ## <span style="color:#0366d6;">可处置的 ref 结构</span>
@@ -54,22 +54,22 @@ static int WriteLinesToFile(IEnumerable<string> lines)
 ```csharp
 int M()
 {
-    int y;
-    LocalFunction();
-    return y;
+int y;
+LocalFunction();
+return y;
 
-    void LocalFunction() => y = 0;
+void LocalFunction() => y = 0;
 }
 ```
 >下面的代码包含一个静态本地函数。 它可以是静态的，因为它不访问封闭范围中的任何变量
 ```csharp
 int M()
 {
-    int y = 5;
-    int x = 7;
-    return Add(x, y);
+int y = 5;
+int x = 7;
+return Add(x, y);
 
-    static int Add(int left, int right) => left + right;
+static int Add(int left, int right) => left + right;
 }
 ```
 ## <span style="color:#0366d6;">Readonly 成员</span>
@@ -81,15 +81,15 @@ int M()
 无法声明 readonly 构造函数。
 
 ```csharp
-  public struct Point
-        {
-            public double X { get; set; }
-            public double Y { get; set; }
-            public readonly double Distance => Math.Sqrt(X * X + Y * Y);
+public struct Point
+{
+public double X { get; set; }
+public double Y { get; set; }
+public readonly double Distance => Math.Sqrt(X * X + Y * Y);
 
-            public readonly override string ToString() =>
-            $"({X}, {Y}) is {Distance} from the origin";
-        }
+public readonly override string ToString() =>
+$"({X}, {Y}) is {Distance} from the origin";
+}
 ```
 ## <span style="color:#0366d6;">索引和范围</span>
 >让我们从索引规则开始。 请考虑数组 sequence。 0 索引与 sequence[0] 相同。 ^0 索引与 sequence[sequence.Length] 相同。 请注意，sequence[^0] 不会引发异常，就像 sequence[sequence.Length] 一样。 对于任何数字 n，索引 ^n 与 sequence.Length - n 相同。
@@ -141,148 +141,148 @@ var text = words[phrase];
 >ICustomer
 ```csharp
 public interface ICustomer
-    {
-        IEnumerable<IOrder> PreviousOrders { get; }
-        DateTime DateJoined { get; }
-        DateTime? LastOrder { get; }
-        string Name { get; }
-        IDictionary<DateTime, string> Reminders { get; }
-       
-        public static void SetLoyaltyThresholds(TimeSpan ago, int minimumOrders, decimal percentageDiscount)
-        {
-            length = ago; 
-            orderCount = minimumOrders;
-            discountPercent = percentageDiscount;
-        }
-        private static TimeSpan length = new TimeSpan(365 * 2, 0, 0, 0); // two years
-        private static int orderCount = 10;
-        private static decimal discountPercent = 0.10m;
+{
+IEnumerable<IOrder> PreviousOrders { get; }
+DateTime DateJoined { get; }
+DateTime? LastOrder { get; }
+string Name { get; }
+IDictionary<DateTime, string> Reminders { get; }
 
-        // <SnippetFinalVersion>
-        public decimal ComputeLoyaltyDiscount() => DefaultLoyaltyDiscount(this);
-        protected static decimal DefaultLoyaltyDiscount(ICustomer c)
-        {
-            DateTime start = DateTime.Now - length;
+public static void SetLoyaltyThresholds(TimeSpan ago, int minimumOrders, decimal percentageDiscount)
+{
+length = ago; 
+orderCount = minimumOrders;
+discountPercent = percentageDiscount;
+}
+private static TimeSpan length = new TimeSpan(365 * 2, 0, 0, 0); // two years
+private static int orderCount = 10;
+private static decimal discountPercent = 0.10m;
 
-            if ((c.DateJoined < start) && (c.PreviousOrders.Count() > orderCount))
-            {
-                return discountPercent;
-            }
-            return 0;
-        }
-        // </SnippetFinalVersion>
-    }
+// <SnippetFinalVersion>
+public decimal ComputeLoyaltyDiscount() => DefaultLoyaltyDiscount(this);
+protected static decimal DefaultLoyaltyDiscount(ICustomer c)
+{
+DateTime start = DateTime.Now - length;
+
+if ((c.DateJoined < start) && (c.PreviousOrders.Count() > orderCount))
+{
+return discountPercent;
+}
+return 0;
+}
+// </SnippetFinalVersion>
+}
 ```
 >IOrder
 ```csharp
 public interface IOrder
-    {
-        DateTime Purchased { get; }
-        decimal Cost { get; }
-    }
+{
+    DateTime Purchased { get; }
+    decimal Cost { get; }
+}
 ```
 >SampleCustomer
 ```csharp
 public class SampleCustomer : ICustomer
-    {
-        public SampleCustomer(string name, DateTime dateJoined) => 
-            (Name, DateJoined) = (name, dateJoined);
+{
+public SampleCustomer(string name, DateTime dateJoined) => 
+(Name, DateJoined) = (name, dateJoined);
 
-        private List<IOrder> allOrders = new List<IOrder>();
+private List<IOrder> allOrders = new List<IOrder>();
 
-        public IEnumerable<IOrder> PreviousOrders => allOrders;
+public IEnumerable<IOrder> PreviousOrders => allOrders;
 
-        public DateTime DateJoined { get; }
+public DateTime DateJoined { get; }
 
-        public DateTime? LastOrder { get; private set; }
+public DateTime? LastOrder { get; private set; }
 
-        public string Name { get; }
+public string Name { get; }
 
-        private Dictionary<DateTime, string> reminders = new Dictionary<DateTime, string>();
-        public IDictionary<DateTime, string> Reminders => reminders;
+private Dictionary<DateTime, string> reminders = new Dictionary<DateTime, string>();
+public IDictionary<DateTime, string> Reminders => reminders;
 
-        public void AddOrder(IOrder order)
-        {
-            if (order.Purchased > (LastOrder ?? DateTime.MinValue))
-                LastOrder = order.Purchased;
-            allOrders.Add(order);
-        }
+public void AddOrder(IOrder order)
+{
+if (order.Purchased > (LastOrder ?? DateTime.MinValue))
+LastOrder = order.Purchased;
+allOrders.Add(order);
+}
 
-        // <SnippetOverrideAndExtend>
-        public decimal ComputeLoyaltyDiscount()
-        {
-           if (PreviousOrders.Any() == false)
-                return 0.50m;
-            else
-                return ICustomer.DefaultLoyaltyDiscount(this);
-        }
-        // </SnippetOverrideAndExtend>
-    }
+// <SnippetOverrideAndExtend>
+public decimal ComputeLoyaltyDiscount()
+{
+if (PreviousOrders.Any() == false)
+return 0.50m;
+else
+return ICustomer.DefaultLoyaltyDiscount(this);
+}
+// </SnippetOverrideAndExtend>
+}
 ```
 >SampleOrder
 ```csharp
  public class SampleOrder : IOrder
-    {
-        public SampleOrder(DateTime purchase, decimal cost) =>
-            (Purchased, Cost) = (purchase, cost);
+{
+    public SampleOrder(DateTime purchase, decimal cost) =>
+        (Purchased, Cost) = (purchase, cost);
 
-        public DateTime Purchased { get; }
+    public DateTime Purchased { get; }
 
-        public decimal Cost { get; }
-    }
+    public decimal Cost { get; }
+}
 ```
 ```csharp
  static void Main(string[] args)
 {
-    // <SnippetTestDefaultImplementation>
-    SampleCustomer c = new SampleCustomer("customer one", new DateTime(2010, 5, 31))
-    {
-        Reminders =
-        {
-            { new DateTime(2010, 08, 12), "childs's birthday" },
-            { new DateTime(1012, 11, 15), "anniversary" }
-        }
-    };
+// <SnippetTestDefaultImplementation>
+SampleCustomer c = new SampleCustomer("customer one", new DateTime(2010, 5, 31))
+{
+Reminders =
+{
+{ new DateTime(2010, 08, 12), "childs's birthday" },
+{ new DateTime(1012, 11, 15), "anniversary" }
+}
+};
 
-    SampleOrder o = new SampleOrder(new DateTime(2012, 6, 1), 5m);
-    c.AddOrder(o);
+SampleOrder o = new SampleOrder(new DateTime(2012, 6, 1), 5m);
+c.AddOrder(o);
 
-    o = new SampleOrder(new DateTime(2103, 7, 4), 25m);
-    c.AddOrder(o);
+o = new SampleOrder(new DateTime(2103, 7, 4), 25m);
+c.AddOrder(o);
 
-    // <SnippetHighlightCast>
-    // Check the discount:
-    ICustomer theCustomer = c;
-    Console.WriteLine($"Current discount: {theCustomer.ComputeLoyaltyDiscount()}");
-    // </SnippetHighlightCast>
-    // </SnippetTestDefaultImplementation>
+// <SnippetHighlightCast>
+// Check the discount:
+ICustomer theCustomer = c;
+Console.WriteLine($"Current discount: {theCustomer.ComputeLoyaltyDiscount()}");
+// </SnippetHighlightCast>
+// </SnippetTestDefaultImplementation>
 
-    // Add more orders to get the discount:
-    DateTime recurring = new DateTime(2013, 3, 15);
-    for(int i = 0; i < 15; i++)
-    {
-        o = new SampleOrder(recurring, 19.23m * i);
-        c.AddOrder(o);
+// Add more orders to get the discount:
+DateTime recurring = new DateTime(2013, 3, 15);
+for(int i = 0; i < 15; i++)
+{
+o = new SampleOrder(recurring, 19.23m * i);
+c.AddOrder(o);
 
-        recurring.AddMonths(2);
-    }
+recurring.AddMonths(2);
+}
 
-    Console.WriteLine($"Data about {c.Name}");
-    Console.WriteLine($"Joined on {c.DateJoined}. Made {c.PreviousOrders.Count()} orders, the last on {c.LastOrder}");
-    Console.WriteLine("Reminders:");
-    foreach(var item in c.Reminders)
-    {
-        Console.WriteLine($"\t{item.Value} on {item.Key}");
-    }
-    foreach (IOrder order in c.PreviousOrders)
-        Console.WriteLine($"Order on {order.Purchased} for {order.Cost}");
+Console.WriteLine($"Data about {c.Name}");
+Console.WriteLine($"Joined on {c.DateJoined}. Made {c.PreviousOrders.Count()} orders, the last on {c.LastOrder}");
+Console.WriteLine("Reminders:");
+foreach(var item in c.Reminders)
+{
+Console.WriteLine($"\t{item.Value} on {item.Key}");
+}
+foreach (IOrder order in c.PreviousOrders)
+Console.WriteLine($"Order on {order.Purchased} for {order.Cost}");
 
-    Console.WriteLine($"Current discount: {theCustomer.ComputeLoyaltyDiscount()}");
+Console.WriteLine($"Current discount: {theCustomer.ComputeLoyaltyDiscount()}");
 
-    // <SnippetSetLoyaltyThresholds>
-    ICustomer.SetLoyaltyThresholds(new TimeSpan(30, 0, 0, 0), 1, 0.25m);
-    Console.WriteLine($"Current discount: {theCustomer.ComputeLoyaltyDiscount()}");
-    // </SnippetSetLoyaltyThresholds>
+// <SnippetSetLoyaltyThresholds>
+ICustomer.SetLoyaltyThresholds(new TimeSpan(30, 0, 0, 0), 1, 0.25m);
+Console.WriteLine($"Current discount: {theCustomer.ComputeLoyaltyDiscount()}");
+// </SnippetSetLoyaltyThresholds>
 }
 ```
 </details>
@@ -303,17 +303,17 @@ public enum Rainbow
 ```
 ```csharp
 public static RGBColor FromRainbow(Rainbow colorBand) =>
-    colorBand switch
-    {
-        Rainbow.Red    => new RGBColor(0xFF, 0x00, 0x00),
-        Rainbow.Orange => new RGBColor(0xFF, 0x7F, 0x00),
-        Rainbow.Yellow => new RGBColor(0xFF, 0xFF, 0x00),
-        Rainbow.Green  => new RGBColor(0x00, 0xFF, 0x00),
-        Rainbow.Blue   => new RGBColor(0x00, 0x00, 0xFF),
-        Rainbow.Indigo => new RGBColor(0x4B, 0x00, 0x82),
-        Rainbow.Violet => new RGBColor(0x94, 0x00, 0xD3),
-        _              => throw new ArgumentException(message: "invalid enum value", paramName: nameof(colorBand)),
-    };
+colorBand switch
+{
+    Rainbow.Red    => new RGBColor(0xFF, 0x00, 0x00),
+    Rainbow.Orange => new RGBColor(0xFF, 0x7F, 0x00),
+    Rainbow.Yellow => new RGBColor(0xFF, 0xFF, 0x00),
+    Rainbow.Green  => new RGBColor(0x00, 0xFF, 0x00),
+    Rainbow.Blue   => new RGBColor(0x00, 0x00, 0xFF),
+    Rainbow.Indigo => new RGBColor(0x4B, 0x00, 0x82),
+    Rainbow.Violet => new RGBColor(0x94, 0x00, 0xD3),
+    _              => throw new ArgumentException(message: "invalid enum value", paramName: nameof(colorBand)),
+};
 ```
 >1.变量位于 switch 关键字之前。 不同的顺序使得在视觉上可以很轻松地区分 switch 表达式和 switch 语句。
 2.将 case 和 : 元素替换为 =>。 它更简洁，更直观。
@@ -324,25 +324,25 @@ public static RGBColor FromRainbow(Rainbow colorBand) =>
 ```csharp
 public static RGBColor FromRainbowClassic(Rainbow colorBand)
 {
-    switch (colorBand)
-    {
-        case Rainbow.Red:
-            return new RGBColor(0xFF, 0x00, 0x00);
-        case Rainbow.Orange:
-            return new RGBColor(0xFF, 0x7F, 0x00);
-        case Rainbow.Yellow:
-            return new RGBColor(0xFF, 0xFF, 0x00);
-        case Rainbow.Green:
-            return new RGBColor(0x00, 0xFF, 0x00);
-        case Rainbow.Blue:
-            return new RGBColor(0x00, 0x00, 0xFF);
-        case Rainbow.Indigo:
-            return new RGBColor(0x4B, 0x00, 0x82);
-        case Rainbow.Violet:
-            return new RGBColor(0x94, 0x00, 0xD3);
-        default:
-            throw new ArgumentException(message: "invalid enum value", paramName: nameof(colorBand));
-    };
+switch (colorBand)
+{
+case Rainbow.Red:
+    return new RGBColor(0xFF, 0x00, 0x00);
+case Rainbow.Orange:
+    return new RGBColor(0xFF, 0x7F, 0x00);
+case Rainbow.Yellow:
+    return new RGBColor(0xFF, 0xFF, 0x00);
+case Rainbow.Green:
+    return new RGBColor(0x00, 0xFF, 0x00);
+case Rainbow.Blue:
+    return new RGBColor(0x00, 0x00, 0xFF);
+case Rainbow.Indigo:
+    return new RGBColor(0x4B, 0x00, 0x82);
+case Rainbow.Violet:
+    return new RGBColor(0x94, 0x00, 0xD3);
+default:
+    throw new ArgumentException(message: "invalid enum value", paramName: nameof(colorBand));
+};
 }
 ```
 ### 属性模式
