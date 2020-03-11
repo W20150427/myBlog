@@ -758,7 +758,7 @@ Func<string, bool> whereClause = default(Func<string, bool>);
 Func<string, bool> whereClause = default;
 ```
 ## <span style="color:#0366d6;">引用程序集生成</span>
->todo
+>有两个新编译器选项可生成仅引用程序集：-refout 和 -refonly
 # <span style="color:#0366d6;">C#7.2语法</span>
 ## <span style="color:#0366d6;">非尾随命名参数</span>
 >没有后接任何位置实参或
