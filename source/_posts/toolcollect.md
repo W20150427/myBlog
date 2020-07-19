@@ -13,3 +13,5 @@ categories: 工具
 [curl for Windows](https://curl.haxx.se/windows/ "curl")
 [manual](https://curl.haxx.se/docs/manual.html "操作手册")
 [HTTP Scripting](https://curl.haxx.se/docs/httpscripting.html "HTTP Scripting")
+# <span style="color:#0366d6;">代理privoxy</span>
+[入门参考](https://www.cnblogs.com/hongdada/p/10787924.html "资料")
