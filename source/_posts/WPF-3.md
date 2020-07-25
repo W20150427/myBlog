@@ -1,5 +1,5 @@
 ---
-title: WPF 布局 
+title: WPF 布局 基础篇
 date: 2020-07-19
 tags: [WPF]
 categories: WPF
