@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="WPF," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考:WPF 编程宝典https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-cn&#x2F;dotnet&#x2F;framework&#x2F;wpf&#x2F;advanced&#x2F;properties-wpfhttps:&#x2F;&#x2F;www.cnblogs.com&#x2F;Zhouyongh&#x2F;archive&#x2F;2009&#x2F;09&#x2F;10&#x2F;1564099.html  依赖属性的出现，主要是为了解决对象的属性带来的膨胀，因为依赖属性设计为静态，所有对象共用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WPF 依赖属性">
+<meta property="og:url" content="https://w20150427.github.io/2020/07/26/WPF-5/index.html">
+<meta property="og:site_name" content="王斌的博客">
+<meta property="og:description" content="参考:WPF 编程宝典https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-cn&#x2F;dotnet&#x2F;framework&#x2F;wpf&#x2F;advanced&#x2F;properties-wpfhttps:&#x2F;&#x2F;www.cnblogs.com&#x2F;Zhouyongh&#x2F;archive&#x2F;2009&#x2F;09&#x2F;10&#x2F;1564099.html  依赖属性的出现，主要是为了解决对象的属性带来的膨胀，因为依赖属性设计为静态，所有对象共用">
+<meta property="og:image" content="https://picb.zhimg.com/80/v2-4cc97c6644074daf299805cddf4463fb_720w.png">
+<meta property="article:published_time" content="2020-07-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-02T07:35:38.550Z">
+<meta property="article:author" content="wang bin">
+<meta property="article:tag" content="WPF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picb.zhimg.com/80/v2-4cc97c6644074daf299805cddf4463fb_720w.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://w20150427.github.io/2020/07/26/WPF-5/"/>
+
+
+
+
+
+  <title>WPF 依赖属性 | 王斌的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王斌的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">wang bin's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://w20150427.github.io/2020/07/26/WPF-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wang bin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王斌的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WPF 依赖属性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-26T00:00:00+08:00">
+                2020-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WPF/" itemprop="url" rel="index">
+                    <span itemprop="name">WPF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<p>参考:WPF 编程宝典<br><a href="https://docs.microsoft.com/zh-cn/dotnet/framework/wpf/advanced/properties-wpf" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/framework/wpf/advanced/properties-wpf</a><br><a href="https://www.cnblogs.com/Zhouyongh/archive/2009/09/10/1564099.html" target="_blank" rel="noopener">https://www.cnblogs.com/Zhouyongh/archive/2009/09/10/1564099.html</a></p>
+<blockquote>
+<p>依赖属性的出现，主要是为了解决对象的属性带来的膨胀，因为依赖属性设计为静态，<br>所有对象共用一份，减少消耗，由于其内部的设计，每个对象又可以独立设置和拥有依赖属性的值<br>其原理参考引用链接中的文章</p>
+</blockquote>
+<h1 id="模拟依赖属性实现"><a href="#模拟依赖属性实现" class="headerlink" title="模拟依赖属性实现"></a><span style="color:#0366d6;">模拟依赖属性实现</span></h1><blockquote>
+<p>引用自<a href="https://www.cnblogs.com/Zhouyongh/archive/2009/09/10/1564099.html" target="_blank" rel="noopener">https://www.cnblogs.com/Zhouyongh/archive/2009/09/10/1564099.html</a></p>
+</blockquote>
+<details>
+<summary>点开查看</summary>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DependencyObject obj = <span class="keyword">new</span> DependencyObject();</span><br><span class="line">    SubDependencyObject subObj = <span class="keyword">new</span> SubDependencyObject();</span><br><span class="line">    <span class="keyword">string</span> sd = subObj.Name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DependencyObject</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;EffectiveValueEntry&gt; _effectiveValues = <span class="keyword">new</span> List&lt;EffectiveValueEntry&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> DependencyProperty NameProperty = DependencyProperty.Register(<span class="string">"Name"</span>, <span class="keyword">typeof</span>(<span class="keyword">string</span>), <span class="keyword">typeof</span>(DependencyObject), <span class="string">"Name"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">GetValue</span>(<span class="params">DependencyProperty dp</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        EffectiveValueEntry effectiveValue = _effectiveValues.FirstOrDefault((i) =&gt; i.PropertyIndex == dp.Index);</span><br><span class="line">        <span class="keyword">if</span> (effectiveValue.PropertyIndex != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> effectiveValue.Value;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            PropertyMetadata metadata;</span><br><span class="line">            metadata = DependencyProperty.RegisteredDps[dp.HashCode].GetMetadata(<span class="keyword">this</span>.GetType());</span><br><span class="line">            <span class="keyword">return</span> metadata.Value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetValue</span>(<span class="params">DependencyProperty dp, <span class="keyword">object</span> <span class="keyword">value</span></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        EffectiveValueEntry effectiveValue = _effectiveValues.FirstOrDefault((i) =&gt; i.PropertyIndex == dp.Index);</span><br><span class="line">        <span class="keyword">if</span> (effectiveValue.PropertyIndex != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            effectiveValue.Value = <span class="keyword">value</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            effectiveValue = <span class="keyword">new</span> EffectiveValueEntry() &#123; PropertyIndex = dp.Index, Value = <span class="keyword">value</span> &#125;;</span><br><span class="line">            _effectiveValues.Add(effectiveValue);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">string</span>)GetValue(NameProperty);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span></span><br><span class="line">        &#123;</span><br><span class="line">            SetValue(NameProperty, <span class="keyword">value</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SubDependencyObject</span> : <span class="title">DependencyObject</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="title">SubDependencyObject</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        NameProperty.OverrideMetadata(<span class="keyword">typeof</span>(SubDependencyObject), <span class="keyword">new</span> PropertyMetadata(<span class="string">"SubName"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DependencyProperty</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> globalIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">static</span> Dictionary&lt;<span class="keyword">object</span>, DependencyProperty&gt; RegisteredDps = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">object</span>, DependencyProperty&gt;();</span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">string</span> Name;</span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">object</span> Value;</span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">int</span> Index;</span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">object</span> HashCode;</span><br><span class="line">    <span class="keyword">private</span> PropertyMetadata _defaultMetadata;</span><br><span class="line">    <span class="keyword">private</span> List&lt;PropertyMetadata&gt; _metadataMap = <span class="keyword">new</span> List&lt;PropertyMetadata&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DependencyProperty</span>(<span class="params"><span class="keyword">string</span> name, Type propertyName, Type ownerType, <span class="keyword">object</span> defaultValue</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">this</span>.Name = name;</span><br><span class="line">        <span class="keyword">this</span>.Value = defaultValue;</span><br><span class="line">        <span class="keyword">this</span>.HashCode = name.GetHashCode() ^ ownerType.GetHashCode();</span><br><span class="line"></span><br><span class="line">        PropertyMetadata metadata = <span class="keyword">new</span> PropertyMetadata(defaultValue) &#123; Type = ownerType &#125;;</span><br><span class="line">        _metadataMap.Add(metadata);</span><br><span class="line">        _defaultMetadata = metadata;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DependencyProperty <span class="title">Register</span>(<span class="params"><span class="keyword">string</span> name, Type propertyType, Type ownerType, <span class="keyword">object</span> defaultValue</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        DependencyProperty dp = <span class="keyword">new</span> DependencyProperty(name, propertyType, ownerType, defaultValue);</span><br><span class="line">        globalIndex++;</span><br><span class="line">        dp.Index = globalIndex;</span><br><span class="line">        RegisteredDps.Add(dp.HashCode, dp);</span><br><span class="line">        <span class="keyword">return</span> dp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OverrideMetadata</span>(<span class="params">Type forType, PropertyMetadata metadata</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        metadata.Type = forType;</span><br><span class="line">        _metadataMap.Add(metadata);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PropertyMetadata <span class="title">GetMetadata</span>(<span class="params">Type type</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        PropertyMetadata medatata = _metadataMap.FirstOrDefault((i) =&gt; i.Type == type) ??</span><br><span class="line">            _metadataMap.FirstOrDefault((i) =&gt; type.IsSubclassOf(i.Type));</span><br><span class="line">        <span class="keyword">if</span> (medatata == <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            medatata = _defaultMetadata;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> medatata;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">internal</span> <span class="keyword">struct</span> EffectiveValueEntry</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">int</span> PropertyIndex &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">object</span> Value &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PropertyMetadata</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> Type Type &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">object</span> Value &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PropertyMetadata</span>(<span class="params"><span class="keyword">object</span> defaultValue</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">this</span>.Value = defaultValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</details>
+
+<h1 id="依赖属性优先级"><a href="#依赖属性优先级" class="headerlink" title="依赖属性优先级"></a><span style="color:#0366d6;">依赖属性优先级</span></h1><h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a><span style="color:#0366d6;">优先级</span></h2><blockquote>
+<p>基值：3-11都称为基值，但属性系统强制的优先级最高，在CoerceValueCallback时发生<br>本地值：xaml里面直接给属性赋值或者C#代码中直接赋值，<code>xml &lt;Label x:Name=&quot;lblTest&quot;  Width=&quot;100&quot;/&gt;</code>或者lblTest.Width=100<br>当前值或者叫做有效值（EffctiveValue）：DependencyObject提供了GetValue方法来取得属性值，是最终对外的那个值</p>
+<ol>
+<li>属性系统强制</li>
+<li>活动动画或具有 Hold 行为的动画</li>
+<li>本地值</li>
+<li>TemplatedParent 模板属性</li>
+<li>隐式样式</li>
+<li>样式触发器</li>
+<li>模板触发器</li>
+<li>样式资源库</li>
+<li>默认（主题）样式</li>
+</ol>
+</blockquote>
+<ul>
+<li>主题样式中的活动触发器</li>
+<li>主题样式中的资源库<ol start="10">
+<li>继承</li>
+<li>来自依赖属性元数据的默认值</li>
+</ol>
+</li>
+</ul>
+<h2 id="使用过程"><a href="#使用过程" class="headerlink" title="使用过程"></a><span style="color:#0366d6;">使用过程</span></h2><p><img src="https://picb.zhimg.com/80/v2-4cc97c6644074daf299805cddf4463fb_720w.png" alt="过程"></p>
+<blockquote>
+<ol>
+<li>第一步，确定Base Value，对同一个属性的赋值可能发生在很多地方。比如控件的背景（Background），可能在Style或者控件的构造函数中都对它进行了赋值，这个Base Value就要确定这些值中优先级最高的值，把它作为Base Value。</li>
+<li>第二步，估值。如果从第一步得到的值是一个表达式值（Expression），比如说一个绑定，WPF属性系统需要把它转化成一个实际值。</li>
+<li>第三步，动画。如果当前属性正在作动画，那么因动画而产生的值会优于前面获得的值，这个也就是WPF中常说的动画优先。</li>
+<li>第四步，强制。如果我们在FrameworkPropertyMetadata中传入了CoerceValueCallback，WPF属性系统会回调我们传入的的delagate，进行数据的强制赋值。在属性赋值过程中，Coerce拥有最高的优先级，这个优先级要大于动画的优先级别。</li>
+<li>第五步，验证。如果在Register的时候传入了ValidateValueCallback，那么最后WPF会调用我们传入的delegate，来验证数据的有效性。当数据无效时会抛出异常来通知.</li>
+</ol>
+</blockquote>
+<h1 id="依赖项属性元数据"><a href="#依赖项属性元数据" class="headerlink" title="依赖项属性元数据"></a><span style="color:#0366d6;">依赖项属性元数据</span></h1><blockquote>
+<p>依赖项属性的元数据作为一个对象存在，可以通过设置该属性，来实现依赖属性的某些功能</p>
+</blockquote>
+<ol>
+<li>依赖项属性的默认值</li>
+<li>对影响每个所有者类型的强制行（强制回调）为或更改通知行为（属性更改通知）的回调实现的引用。 请注意，这些回调通常是用非公共访问级别定义的，因此，除非实际引用位于您允许的访问范围内，否则通常无法从元数据获得这些引用</li>
+<li>框架性元属性</li>
+<li>将类作为现有依赖项属性的所有者来添加,AddOwner（添加共享依赖属性）。重写元数据,OverrideMetadata。</li>
+</ol>
+<h1 id="依赖项属性验证和强制"><a href="#依赖项属性验证和强制" class="headerlink" title="依赖项属性验证和强制"></a><span style="color:#0366d6;">依赖项属性验证和强制</span></h1><blockquote>
+<p>验证回调：属性系统可在多种不同操作中使用回调。 这包括按默认值初始类型初始化、通过调用SetValue进行编程更改或尝试使用提供的新默认值覆盖元数据。 如果验证回调是通过其中任何一种操作调用的，并且返回 false，则会引发异常。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">IsValidReading</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当前值的属性更改回叫用于将更改转发到其他依赖属性</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span>  <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">OnCurrentReadingChanged</span>(<span class="params">DependencyObject d, DependencyPropertyChangedEventArgs e</span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>强制值回叫会检查当前属性可能依赖的属性的值，并在必要时强制当前值</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">object</span> <span class="title">CoerceCurrentReading</span>(<span class="params">DependencyObject d, <span class="keyword">object</span> <span class="keyword">value</span></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<details>
+<summary>点开查看</summary>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Gauge</span> : <span class="title">DependencyObject</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> DependencyProperty CurrentReadingProperty = DependencyProperty.Register(</span><br><span class="line"><span class="string">"CurrentReading"</span>,</span><br><span class="line"><span class="keyword">typeof</span>(<span class="keyword">double</span>),</span><br><span class="line"><span class="keyword">typeof</span>(Gauge),</span><br><span class="line"><span class="keyword">new</span> FrameworkPropertyMetadata(</span><br><span class="line"><span class="keyword">double</span>.NaN,</span><br><span class="line">FrameworkPropertyMetadataOptions.AffectsMeasure,</span><br><span class="line"><span class="keyword">new</span> PropertyChangedCallback(PropertyChangedCallback),</span><br><span class="line"><span class="keyword">new</span> CoerceValueCallback(CoerceCurrentReading)),</span><br><span class="line"><span class="keyword">new</span> ValidateValueCallback(IsValidReading));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Gauge</span>(<span class="params"><span class="keyword">int</span> i</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">Console.WriteLine(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PropertyChangedCallback</span>(<span class="params">DependencyObject d, DependencyPropertyChangedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">double</span> CurrentReading</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span> &#123; <span class="keyword">return</span> (<span class="keyword">double</span>)GetValue(CurrentReadingProperty); &#125;</span><br><span class="line"><span class="keyword">set</span> &#123; SetValue(CurrentReadingProperty, <span class="keyword">value</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">IsValidReading</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">Console.WriteLine(<span class="string">"IsValidReading"</span>);</span><br><span class="line">Double v = (Double)<span class="keyword">value</span>;</span><br><span class="line"><span class="keyword">return</span> (!v.Equals(Double.NegativeInfinity) &amp;&amp; !v.Equals(Double.PositiveInfinity));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">object</span> <span class="title">CoerceCurrentReading</span>(<span class="params">DependencyObject d, <span class="keyword">object</span> baseValue</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">1.2</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</details>
+
+<h1 id="附加属性"><a href="#附加属性" class="headerlink" title="附加属性"></a><span style="color:#0366d6;">附加属性</span></h1><blockquote>
+<p>附加属性旨在用作可在任何对象上设置的一类全局属性。在WPF中，附加属性通常定义为没有常规属性“包装”的一种特殊形式的依赖项属性。<br>一个示例是 DockPanel.Dock 属性。 DockPanel.Dock 属性创建为附加属性，因为它将在 DockPanel 中包含的元素上设置，而不是在 DockPanel 本身设置</p>
+</blockquote>
+<blockquote>
+<p>自定义附属属性</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Grid</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Text</span>=<span class="string">"Hello World"</span> <span class="attr">FontSize</span>=<span class="string">"20"</span> <span class="attr">local:Bruce.Top</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">TextBlock</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Bruce</span>:<span class="title">DependencyObject</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">GetLeft</span>(<span class="params">DependencyObject obj</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> (<span class="keyword">double</span>)obj.GetValue(LeftProperty);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetLeft</span>(<span class="params">DependencyObject obj,<span class="keyword">object</span> <span class="keyword">value</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">obj.SetValue(LeftProperty, <span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> DependencyProperty</span><br><span class="line">LeftProperty = DependencyProperty.RegisterAttached</span><br><span class="line">(<span class="string">"Left"</span>, <span class="keyword">typeof</span>(<span class="keyword">double</span>), <span class="keyword">typeof</span>(Bruce), <span class="keyword">new</span> PropertyMetadata(<span class="number">0.0</span>,(obj,e)=&gt; </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">var</span> element=obj <span class="keyword">as</span> FrameworkElement;<span class="comment">//目标控件</span></span><br><span class="line"><span class="keyword">if</span> (element.Parent.GetType() == <span class="keyword">typeof</span>(Canvas))</span><br><span class="line">&#123;</span><br><span class="line">element.Margin = <span class="keyword">new</span> Thickness((<span class="keyword">double</span>)e.NewValue,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/WPF/" rel="tag"># WPF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/25/WPF-4/" rel="next" title="WPF 布局 应用篇">
+                <i class="fa fa-chevron-left"></i> WPF 布局 应用篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wang bin</p>
+              <p class="site-description motion-element" itemprop="description">离离原上草 一岁一枯荣</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模拟依赖属性实现"><span class="nav-number">1.</span> <span class="nav-text">模拟依赖属性实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖属性优先级"><span class="nav-number">2.</span> <span class="nav-text">依赖属性优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级"><span class="nav-number">2.1.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用过程"><span class="nav-number">2.2.</span> <span class="nav-text">使用过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖项属性元数据"><span class="nav-number">3.</span> <span class="nav-text">依赖项属性元数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖项属性验证和强制"><span class="nav-number">4.</span> <span class="nav-text">依赖项属性验证和强制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附加属性"><span class="nav-number">5.</span> <span class="nav-text">附加属性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wang bin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

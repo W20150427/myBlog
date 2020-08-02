@@ -8,7 +8,8 @@ categories: WPF
 # <span style="color:#0366d6;">博客园首页布局</span>
 >整个页面布局是一个五行三列的Grid,右边导航面板，可以用StackPanel,中间列表页是一个StackPanel
 右边内容，放一个StatckPanel
-![效果图](https://pic1.zhimg.com/80/v2-da2655ce59b0ac73a180240a3795c5f8_720w.jpg)
+
+![效果图](https://pic1.zhimg.com/v2-da2655ce59b0ac73a180240a3795c5f8_r.jpg)
 <details>
 <summary>点开查看</summary>
 ```xml

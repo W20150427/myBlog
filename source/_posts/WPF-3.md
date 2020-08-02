@@ -5,6 +5,7 @@ tags: [WPF]
 categories: WPF
 ---
 <!-- more -->
+参考:WPF 编程宝典
 # <span style="color:#0366d6;">布局元素</span>
 <table style="color:#0065b3;width:100%;border:0px;" >
 <tr>
@@ -37,7 +38,7 @@ categories: WPF
 </tr>
 </table>
 
-### <span style="color:#0366d6;">StackPanel</span>
+## <span style="color:#0366d6;">StackPanel</span>
 >该面板简单的在单行或者单列以堆栈形式放置其子元素，通过 Orientation="Horizontal"或者"Vertical"
 ```xml
 <StackPanel Margin="3" Name="stackPanel1" >
@@ -53,7 +54,7 @@ categories: WPF
       Use Vertical Orientation</CheckBox>            
 </StackPanel>
 ```
-### <span style="color:#0366d6;">WrapPanel</span>
+## <span style="color:#0366d6;">WrapPanel</span>
 >该面板在可能的空间里面，以一次一行或者一列的方式布置控件。默认情况下Orientation="Horizontal"
 ```xml
 <WrapPanel Margin="3">
@@ -64,7 +65,7 @@ categories: WPF
     <Button VerticalAlignment="Center">Centered Button</Button>   
 </WrapPanel>
 ```
-### <span style="color:#0366d6;">DockPanel</span>
+## <span style="color:#0366d6;">DockPanel</span>
 >DockPanel面吧是更有趣的布局选项。它沿着一条外边缘来拉伸所包含的控件。理解该面板最简便的方式是，考虑一下位于许多Windows应用程序窗口顶部的工具栏，>这些工具栏停靠到窗口顶部。与StackPanel面板类似，被停靠的元素选择它们的布局的一方面。例如，如果将一个按钮停靠在DockPanel面板顶部，该按钮被拉伸至>DockPanel面板的整个宽度，但根据内容和MinHeight属性为其设置所需的高度。而如果将一个按钮停靠到容器左边，该按钮的高度将被拉伸以适应容器的高度，而其>宽度可以根据需要自由添加。
 ```xml
 <DockPanel LastChildFill="True">
@@ -77,7 +78,7 @@ categories: WPF
       <Button >Remaining Space</Button>
 </DockPanel>
 ```
-### <span style="color:#0366d6;">Grid</span>
+## <span style="color:#0366d6;">Grid</span>
 >Grid面板将元素分割到不可见的单元格中
 ```xml
 <Grid ShowGridLines="True">
@@ -184,7 +185,7 @@ categories: WPF
 ```xml
 UseLayoutRounding="True"
 ```
-### <span style="color:#0366d6;">UniformGrid</span>
+## <span style="color:#0366d6;">UniformGrid</span>
 >不需要预先定义行和列，只需要简单的通过Rows和Columns来确定行数和列数
 ```xml
 <UniformGrid Rows="2" Columns="2">
@@ -194,7 +195,7 @@ UseLayoutRounding="True"
       <Button>Bottom Right</Button>
 </UniformGrid>
 ```
-### <span style="color:#0366d6;">Canvas</span>
+## <span style="color:#0366d6;">Canvas</span>
 >可以使用数值进行绝对定位（单位设备无关单位），可以使用Canvas.Left,Canvas.Bottom,Canvas.Right,Canvas.Top设置数值来定义位置
 
 ```xml
@@ -205,7 +206,7 @@ UseLayoutRounding="True"
       <Button Canvas.Left="70" Canvas.Top="120" Width="100" Height="50">(70,120)</Button>
  </Canvas>
 ```
-### <span style="color:#0366d6;">InkCanvas</span>
+## <span style="color:#0366d6;">InkCanvas</span>
 >InkCanvas和Canvas类似，可以使用Canvas.Left,Canvas.Bottom,Canvas.Right,Canvas.Top设置数值来定义位置
 但是InkCanvas不是派生自Canvas，甚至Panel，直接派生自FrameworkElement,主要用来接收手写设备还有鼠标的绘制
 None = 0,Ink = 1,GestureOnly = 2,InkAndGesture = 3,Select = 4,EraseByPoint = 5,EraseByStroke = 6
